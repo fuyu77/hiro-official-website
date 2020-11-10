@@ -3,8 +3,8 @@ import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
-const name = '[Your Name]'
-export const siteTitle = 'Next.js Sample Website'
+const name = '榊原紘'
+export const siteTitle = '榊原紘｜Official Website'
 
 export default function Layout ({
   children,
@@ -19,7 +19,7 @@ export default function Layout ({
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="歌人・俳人の榊原紘の公式サイトです。掲載情報やブログなど。"
         />
         <meta
           property="og:image"
