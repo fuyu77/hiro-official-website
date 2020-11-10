@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
+import styles from './layout.module.scss'
+import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
 
 const name = '榊原紘'
@@ -29,6 +29,7 @@ export default function Layout ({
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <header className={styles.header}>
         {home
