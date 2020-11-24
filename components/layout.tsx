@@ -1,18 +1,14 @@
 import Head from 'next/head'
-import Link from 'next/link'
 
-const name = '榊原紘'
 export const siteTitle = '榊原紘｜Official Website'
 
 export default function Layout ({
-  children,
-  home
+  children
 }: {
   children: React.ReactNode
-  home?: boolean
 }) {
   return (
-    <div className='container'>
+    <section className="hero is-success is-fullheight">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -29,43 +25,30 @@ export default function Layout ({
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <header>
-        {home
-          ? (
-              <>
-                <img
-                  src="/images/profile.jpg"
-                  alt={name}
-                />
-                <h1 className='title'>{name}</h1>
-              </>
-            )
-          : (
-              <>
-                <Link href="/">
-                  <a>
-                    <img
-                      src="/images/profile.jpg"
-                      alt={name}
-                    />
-                  </a>
-                </Link>
-                <h2 className='subtitle'>
-                  <Link href="/">
-                    <a>{name}</a>
-                  </Link>
-                </h2>
-              </>
-            )}
-      </header>
+      <div className="hero-head">
+        <header className="navbar">
+          <div className="container">
+            <div className="navbar-brand">
+              <div className="navbar-item title is-5 has-text-white">
+                Hiro&apos;s Official Website
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
       <main>{children}</main>
-      {!home && (
-        <div>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
-    </div>
+      <div className="hero-foot">
+        <nav className="tabs is-boxed is-fullwidth">
+          <div className="container">
+            <ul>
+              <li className="is-active"><a>Profile</a></li>
+              <li><a>News</a></li>
+              <li><a>Blog</a></li>
+              <li><a>Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </section>
   )
 }
