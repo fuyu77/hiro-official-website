@@ -1,2 +1,9 @@
 @charset "utf-8";
 @import "../node_modules/bulma/bulma.sass";
+
+footer {
+  background-color: #48c774;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

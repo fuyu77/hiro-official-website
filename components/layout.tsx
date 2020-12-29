@@ -1,14 +1,17 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 export const siteTitle = '榊原紘｜Official Website'
 
 export default function Layout ({
-  children
+  children,
+  activeTab
 }: {
   children: React.ReactNode
+  activeTab: string
 }) {
   return (
-    <section className="hero is-success is-fullheight">
+    <section className="hero is-fullheight is-success">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -25,29 +28,20 @@ export default function Layout ({
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div className="hero-head">
-        <header className="navbar">
-          <div className="container">
-            <div className="navbar-brand">
-              <div className="navbar-item title is-5 has-text-white">
-                Hiro&apos;s Official Website
-              </div>
-            </div>
-          </div>
-        </header>
-      </div>
       <main>{children}</main>
       <div className="hero-foot">
-        <nav className="tabs is-boxed is-fullwidth">
-          <div className="container">
-            <ul>
-              <li className="is-active"><a>Profile</a></li>
-              <li><a>News</a></li>
-              <li><a>Blog</a></li>
-              <li><a>Contact</a></li>
-            </ul>
-          </div>
-        </nav>
+        <footer>
+          <nav className="tabs is-boxed is-fullwidth">
+            <div className="container">
+              <ul>
+                <li className={activeTab === 'Profile' ? 'is-active' : ''}><a>Profile</a></li>
+                <li className={activeTab === 'News' ? 'is-active' : ''}><a>News</a></li>
+                <li className={activeTab === 'Blog' ? 'is-active' : ''}><Link href="/posts"><a>Blog</a></Link></li>
+                <li className={activeTab === 'Contact' ? 'is-active' : ''}><a>Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+        </footer>
       </div>
     </section>
   )

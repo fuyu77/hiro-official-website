@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Date from '../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { ParsedUrlQuery } from 'querystring'
+import utilStyles from '../../styles/utils.module.scss'
 
 export default function Post ({
   postData
@@ -15,17 +16,21 @@ export default function Post ({
   }
 }) {
   return (
-    <Layout>
+    <Layout activeTab="">
       <Head>
         <title>{postData.title}</title>
       </Head>
-      <article>
-        <h1 className='title'>{postData.title}</h1>
-        <div>
-          <Date dateString={postData.date} />
+      <div className={utilStyles.initial}>
+        <div className="hero-body has-background-white">
+        <article className="has-background-white content">
+          <h1>{postData.title}</h1>
+          <div>
+            <Date dateString={postData.date} />
+          </div>
+          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        </article>
         </div>
-        <div className='content' dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-      </article>
+      </div>
     </Layout>
   )
 }
