@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export const siteTitle = '榊原紘｜Official Website'
+export const siteTitle = '榊原紘／衿草遠馬｜Official Website'
 
 export default function Layout ({
   children,
@@ -16,7 +16,7 @@ export default function Layout ({
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="歌人・俳人の榊原紘の公式サイトです。掲載情報やブログなど。"
+          content="歌人・俳人の榊原紘／衿草遠馬の公式サイトです。掲載情報やブログなど。"
         />
         <meta
           property="og:image"
@@ -36,8 +36,16 @@ export default function Layout ({
               <ul>
                 <li className={activeTab === 'Profile' ? 'is-active' : ''}><a>Profile</a></li>
                 <li className={activeTab === 'News' ? 'is-active' : ''}><a>News</a></li>
-                <li className={activeTab === 'Blog' ? 'is-active' : ''}><Link href="/blog"><a>Blog</a></Link></li>
-                <li className={activeTab === 'Contact' ? 'is-active' : ''}><a>Contact</a></li>
+                <li className={activeTab === 'Blog' ? 'is-active' : ''}>
+                  <Link href="/blog">
+                    <a>Blog</a>
+                  </Link>
+                </li>
+                <li className={activeTab === 'Contact' ? 'is-active' : ''}>
+                  <Link href="/contact">
+                    <a>Contact</a>
+                  </Link>
+                </li>
               </ul>
             </div>
           </nav>

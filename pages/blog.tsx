@@ -17,7 +17,7 @@ export default function Home ({
   return (
     <Layout activeTab="Blog">
       <Head>
-        <title>{siteTitle}</title>
+        <title>{`Blog - ${siteTitle}`}</title>
       </Head>
       <div className="hero-body">
         <section>

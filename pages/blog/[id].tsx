@@ -1,4 +1,4 @@
-import Layout from '../../components/layout'
+import Layout, { siteTitle } from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
 import Date from '../../components/date'
@@ -17,7 +17,7 @@ export default function Post ({
   return (
     <Layout activeTab="">
       <Head>
-        <title>{postData.title}</title>
+        <title>{`${postData.title} - ${siteTitle}`}</title>
       </Head>
         <div className="hero-body container is-max-desktop">
           <article className="content">

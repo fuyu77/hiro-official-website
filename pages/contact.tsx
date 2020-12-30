@@ -1,4 +1,4 @@
-import Layout from '../components/layout'
+import Layout, { siteTitle } from '../components/layout'
 import { getContactData } from '../lib/contact'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
@@ -11,7 +11,7 @@ export default function Post ({
   return (
     <Layout activeTab="Contact">
       <Head>
-        <title>Contact</title>
+        <title>{`Contact - ${siteTitle}`}</title>
       </Head>
         <div className="hero-body container is-max-desktop">
           <article className="content">
