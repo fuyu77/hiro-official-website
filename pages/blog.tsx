@@ -28,7 +28,7 @@ export default function Home ({
                   <Date dateString={date} />
                 </small>
                 <br />
-                <Link href={`/posts/${id}`}>
+                <Link href={`/blog/${id}`}>
                   <a className="has-text-weight-semibold is-size-5 has-text-dark">{title}</a>
                 </Link>
               </li>
