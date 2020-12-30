@@ -1,31 +1,34 @@
-import fs from 'fs'
-import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
 
-const postsDirectory = path.join(process.cwd(), 'blog')
+interface PostResponse {
+  id: string;
+  markdownContent: string;
+}
+interface PostsResponse {
+  contents: PostResponse[]
+}
 
-export const getSortedPostsData = () => {
-  const fileNames = fs.readdirSync(postsDirectory)
-  const allPostsData = fileNames.map(fileName => {
-    // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, '')
+interface FrontMatter {
+  date: string;
+  title: string;
+}
 
-    // Read markdown file as string
-    const fullPath = path.join(postsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-
-    // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents)
-
-    // Combine the data with the id
+export const getSortedPostsData = async () => {
+  const data: PostsResponse = await fetch(
+    'https://hiro-official-website.microcms.io/api/v1/posts',
+    { headers: { 'X-API-KEY': process.env.MICROCMS_API_KEY as string } }
+  )
+    .then(response => response.json())
+  const allPostsData = data.contents.map(content => {
+    const id = content.id
+    const matterResult = matter(content.markdownContent)
     return {
       id,
-      ...(matterResult.data as { date: string; title: string })
+      ...(matterResult.data as FrontMatter)
     }
   })
-  // Sort posts by date
   return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1
@@ -35,34 +38,35 @@ export const getSortedPostsData = () => {
   })
 }
 
-export const getAllPostIds = () => {
-  const fileNames = fs.readdirSync(postsDirectory)
-  return fileNames.map(fileName => {
+export const getAllPostIds = async () => {
+  const data: PostsResponse = await fetch(
+    'https://hiro-official-website.microcms.io/api/v1/posts',
+    { headers: { 'X-API-KEY': process.env.MICROCMS_API_KEY as string } }
+  )
+    .then(response => response.json())
+  return data.contents.map(content => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, '')
+        id: content.id
       }
     }
   })
 }
 
 export const getPostData = async (id: string) => {
-  const fullPath = path.join(postsDirectory, `${id}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-
-  // Use gray-matter to parse the post metadata section
-  const matterResult = matter(fileContents)
-
-  // Use remark to convert markdown into HTML string
+  const data: PostResponse = await fetch(
+    `https://hiro-official-website.microcms.io/api/v1/posts/${id}`,
+    { headers: { 'X-API-KEY': process.env.MICROCMS_API_KEY as string } }
+  )
+    .then(response => response.json())
+  const matterResult = matter(data.markdownContent)
   const processedContent = await remark()
     .use(html)
     .process(matterResult.content)
   const contentHtml = processedContent.toString()
-
-  // Combine the data with the id and contentHtml
   return {
     id,
     contentHtml,
-    ...(matterResult.data as { date: string; title: string })
+    ...(matterResult.data as FrontMatter)
   }
 }
