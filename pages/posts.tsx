@@ -29,7 +29,7 @@ export default function Home ({
                 </small>
                 <br />
                 <Link href={`/posts/${id}`}>
-                  <a className="has-text-white has-text-weight-semibold is-size-5">{title}</a>
+                  <a className="has-text-weight-semibold is-size-5 has-text-dark">{title}</a>
                 </Link>
               </li>
             ))}

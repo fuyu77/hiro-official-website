@@ -11,7 +11,7 @@ export default function Layout ({
   activeTab: string
 }) {
   return (
-    <section className="hero is-fullheight is-success">
+    <section className="hero is-fullheight">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta

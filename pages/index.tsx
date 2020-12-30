@@ -11,22 +11,14 @@ export default function Home () {
         <header className="navbar">
           <div className="container">
             <div className="navbar-brand">
-              <div className="navbar-item title is-5 has-text-white">
-                Hiro&apos;s Official Website
+              <div className="navbar-item title is-5">
+                Hiro & Tohma&apos;s Official Website
               </div>
             </div>
           </div>
         </header>
       </div>
       <div className="hero-body">
-        <div className="container has-text-centered">
-          <h1 className="title">
-            Title
-          </h1>
-          <h2 className="subtitle">
-            Subtitle
-          </h2>
-        </div>
       </div>
     </Layout>
   )

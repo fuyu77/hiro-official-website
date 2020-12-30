@@ -2,8 +2,48 @@
 @import "../node_modules/bulma/bulma.sass";
 
 footer {
-  background-color: #48c774;
+  background-color: white;
   position: fixed;
   bottom: 0;
   width: 100%;
 }
+
+.has-text-dark {
+  color: #4a4a4a !important;
+}
+
+.tabs.is-boxed a:hover {
+  background-color: palegreen;
+}
+
+.tabs.is-boxed li.is-active a {
+  background-color: palegreen;
+}
+
+.tabs li.is-active a {
+  color: #4a4a4a;
+}
+
+.content {
+  line-height: 2.0;
+
+  p:not(:last-child) {
+    margin-bottom: 1.25rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    border-left: solid 5px green;
+    border-bottom: solid 1px green;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
