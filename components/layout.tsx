@@ -34,7 +34,11 @@ export default function Layout ({
           <nav className="tabs is-boxed is-fullwidth">
             <div className="container">
               <ul>
-                <li className={activeTab === 'Profile' ? 'is-active' : ''}><a>Profile</a></li>
+                <li className={activeTab === 'Profile' ? 'is-active' : ''}>
+                  <Link href="/profile">
+                    <a>Profile</a>
+                  </Link>
+                </li>
                 <li className={activeTab === 'News' ? 'is-active' : ''}>
                   <Link href="/news">
                     <a>News</a>
