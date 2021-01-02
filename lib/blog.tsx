@@ -3,16 +3,16 @@ import remark from 'remark'
 import html from 'remark-html'
 
 interface PostResponse {
-  id: string;
-  markdown: string;
+  id: string
+  markdown: string
 }
 interface PostsResponse {
   contents: PostResponse[]
 }
 
 interface FrontMatter {
-  date: string;
-  title: string;
+  date: string
+  title: string
 }
 
 export const getSortedPostsData = async () => {

@@ -2,15 +2,15 @@ import matter from 'gray-matter'
 
 interface NewsResponse {
   contents: {
-    id: string;
-    markdown: string;
+    id: string
+    markdown: string
   }[]
 }
 
 interface FrontMatter {
-  date: string;
-  title: string;
-  url: string;
+  date: string
+  title: string
+  url: string
 }
 
 export const getSortedNewsData = async () => {

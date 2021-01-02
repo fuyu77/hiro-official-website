@@ -2,7 +2,7 @@ import remark from 'remark'
 import html from 'remark-html'
 
 interface ContactResponse {
-  markdown: string;
+  markdown: string
 }
 
 export const getProfileData = async () => {
