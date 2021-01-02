@@ -3,7 +3,7 @@ import matter from 'gray-matter'
 interface NewsResponse {
   contents: {
     id: string;
-    markdownContent: string;
+    markdown: string;
   }[]
 }
 
@@ -20,7 +20,7 @@ export const getSortedNewsData = async () => {
   )
     .then(response => response.json())
   const allNewsData = data.contents.map(content => {
-    const matterResult = matter(content.markdownContent)
+    const matterResult = matter(content.markdown)
     return {
       id: content.id,
       ...(matterResult.data as FrontMatter)

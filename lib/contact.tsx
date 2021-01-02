@@ -2,7 +2,7 @@ import remark from 'remark'
 import html from 'remark-html'
 
 interface ContactResponse {
-  markdownContent: string;
+  markdown: string;
 }
 
 export const getContactData = async () => {
@@ -13,7 +13,7 @@ export const getContactData = async () => {
     .then(response => response.json())
   const processedContent = await remark()
     .use(html)
-    .process(data.markdownContent)
+    .process(data.markdown)
   const contentHtml = processedContent.toString()
   return contentHtml
 }

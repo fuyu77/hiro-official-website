@@ -4,7 +4,7 @@ import html from 'remark-html'
 
 interface PostResponse {
   id: string;
-  markdownContent: string;
+  markdown: string;
 }
 interface PostsResponse {
   contents: PostResponse[]
@@ -23,7 +23,7 @@ export const getSortedPostsData = async () => {
     .then(response => response.json())
   const allPostsData = data.contents.map(content => {
     const id = content.id
-    const matterResult = matter(content.markdownContent)
+    const matterResult = matter(content.markdown)
     return {
       id,
       ...(matterResult.data as FrontMatter)
@@ -59,7 +59,7 @@ export const getPostData = async (id: string) => {
     { headers: { 'X-API-KEY': process.env.MICROCMS_API_KEY as string } }
   )
     .then(response => response.json())
-  const matterResult = matter(data.markdownContent)
+  const matterResult = matter(data.markdown)
   const processedContent = await remark()
     .use(html)
     .process(matterResult.content)
