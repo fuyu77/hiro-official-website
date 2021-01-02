@@ -35,7 +35,11 @@ export default function Layout ({
             <div className="container">
               <ul>
                 <li className={activeTab === 'Profile' ? 'is-active' : ''}><a>Profile</a></li>
-                <li className={activeTab === 'News' ? 'is-active' : ''}><a>News</a></li>
+                <li className={activeTab === 'News' ? 'is-active' : ''}>
+                  <Link href="/news">
+                    <a>News</a>
+                  </Link>
+                </li>
                 <li className={activeTab === 'Blog' ? 'is-active' : ''}>
                   <Link href="/blog">
                     <a>Blog</a>

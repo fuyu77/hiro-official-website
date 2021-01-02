@@ -27,6 +27,10 @@ footer {
 .content {
   line-height: 2.0;
 
+  p, dl, ol, ul, blockquote, pre, table {
+    margin-bottom: 2rem;
+  }
+
   p:not(:last-child), dl:not(:last-child), ol:not(:last-child), ul:not(:last-child), blockquote:not(:last-child), pre:not(:last-child), table:not(:last-child) {
     margin-bottom: 2rem;
   }
