@@ -19,7 +19,7 @@ export default function Blog ({
       <Head>
         <title>{`Blog - ${siteTitle}`}</title>
       </Head>
-      <div className="hero-body">
+      <div className="hero-body container">
         <section>
           <ul>
             {allPostsData.map(({ id, date, title }) => (

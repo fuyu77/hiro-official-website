@@ -19,7 +19,7 @@ export default function News ({
       <Head>
         <title>{`Blog - ${siteTitle}`}</title>
       </Head>
-      <div className="hero-body">
+      <div className="hero-body container">
         <section>
           <ul>
             {allNewsData.map(({ id, date, title, url }) => (
