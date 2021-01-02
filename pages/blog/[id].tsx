@@ -1,5 +1,5 @@
 import Layout, { siteTitle } from '../../components/layout'
-import { getAllPostIds, getPostData } from '../../lib/posts'
+import { getAllPostIds, getPostData } from '../../lib/blog'
 import Head from 'next/head'
 import Date from '../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'

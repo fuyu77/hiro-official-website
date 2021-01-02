@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Date from '../components/date'
 import Layout, { siteTitle } from '../components/layout'
-import { getSortedPostsData } from '../lib/posts'
+import { getSortedPostsData } from '../lib/blog'
 import { GetStaticProps } from 'next'
 
 export default function Home ({
