@@ -3,7 +3,7 @@ import { getContactData } from '../lib/contact'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
 
-export default function Post ({
+export default function Contact ({
   contactData
 }: {
   contactData: string

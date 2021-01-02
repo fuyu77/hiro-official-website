@@ -5,7 +5,7 @@ import Layout, { siteTitle } from '../components/layout'
 import { getSortedPostsData } from '../lib/blog'
 import { GetStaticProps } from 'next'
 
-export default function Home ({
+export default function Blog ({
   allPostsData
 }: {
   allPostsData: {
