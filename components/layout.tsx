@@ -21,7 +21,7 @@ const Layout: React.FC<{ activeTab: string }> = ({ children, activeTab }) => {
         <header className="navbar">
           <div className="container">
             <div className="navbar-brand">
-              <div className="navbar-item is-size-5">
+              <div className="navbar-item is-size-6">
                 <Link href="/">
                   <a className="has-text-dark">Hiro & Tohma&apos;s Official Website</a>
                 </Link>

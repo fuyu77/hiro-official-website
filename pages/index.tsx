@@ -36,7 +36,7 @@ const Home: React.FC<Props> = ({ allTankasData }) => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <div className={`${styles.tankaWrapper} is-size-5`} ref={tankaInput}>
+      <div className={`${styles.tankaWrapper} is-size-6`} ref={tankaInput}>
         <div className={styles.tankaItem} >
           {tanka}
         </div>
