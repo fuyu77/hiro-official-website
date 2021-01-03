@@ -28,7 +28,7 @@ const Profile: React.FC<Props> = ({ profileData }) => {
       </Head>
         <div className="hero-body container is-max-desktop">
           <article className="content">
-            <Image src="/../public/images/profile.jpg" width="1200" height="1776" />
+            <Image src="/images/profile.jpg" width="1200" height="1776" />
             {content}
           </article>
         </div>
