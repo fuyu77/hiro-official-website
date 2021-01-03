@@ -1,0 +1,15 @@
+.tankaWrapper {
+  margin: 1rem auto 3rem;
+  width: 3rem;
+  font-family: serif;
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.tankaItem {
+  flex: 1;
+}
