@@ -4,16 +4,16 @@ import Layout, { siteTitle } from '../components/layout'
 import { getSortedNewsData } from '../lib/news'
 import { GetStaticProps } from 'next'
 
-export default function News ({
-  allNewsData
-}: {
+interface Props {
   allNewsData: {
     id: string
     date: string
     title: string
     url: string
   }[]
-}) {
+}
+
+const News: React.FC<Props> = ({ allNewsData }) => {
   return (
     <Layout activeTab="News">
       <Head>
@@ -38,7 +38,7 @@ export default function News ({
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const allNewsData = await getSortedNewsData()
   return {
     props: {
@@ -46,3 +46,5 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   }
 }
+
+export default News

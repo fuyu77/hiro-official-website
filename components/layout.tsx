@@ -3,13 +3,7 @@ import Link from 'next/link'
 
 export const siteTitle = '榊原紘／衿草遠馬｜Official Website'
 
-export default function Layout ({
-  children,
-  activeTab
-}: {
-  children: React.ReactNode
-  activeTab: string
-}) {
+const Layout: React.FC<{ activeTab: string }> = ({ children, activeTab }) => {
   return (
     <section className="hero is-fullheight">
       <Head>
@@ -75,3 +69,5 @@ export default function Layout ({
     </section>
   )
 }
+
+export default Layout

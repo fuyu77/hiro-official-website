@@ -9,13 +9,17 @@ import Image from 'next/image'
 import InlineWrapper from '../components/inline-wrapper'
 import InlineItem from '../components/inline-item'
 
-const components = { Image, InlineWrapper, InlineItem }
-
-export default function Profile ({
-  profileData
-}: {
+interface Props {
   profileData: MdxRemote.Source
-}) {
+}
+
+type Components = {
+  [K in keyof MdxRemote.Components]: MdxRemote.Components[K] | typeof Image
+}
+
+const components: Components = { Image, InlineWrapper, InlineItem }
+
+const Profile: React.FC<Props> = ({ profileData }) => {
   const content = hydrate(profileData, { components })
   return (
     <Layout activeTab="Profile">
@@ -31,7 +35,7 @@ export default function Profile ({
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const profileData = await getProfileData()
   const mdxProfileData = await renderToString(profileData, { components })
   return {
@@ -40,3 +44,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   }
 }
+
+export default Profile

@@ -5,15 +5,15 @@ import Layout, { siteTitle } from '../components/layout'
 import { getSortedPostsData } from '../lib/blog'
 import { GetStaticProps } from 'next'
 
-export default function Blog ({
-  allPostsData
-}: {
+interface Props {
   allPostsData: {
     date: string
     title: string
     id: string
   }[]
-}) {
+}
+
+const Blog: React.FC<Props> = ({ allPostsData }) => {
   return (
     <Layout activeTab="Blog">
       <Head>
@@ -40,7 +40,7 @@ export default function Blog ({
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const allPostsData = await getSortedPostsData()
   return {
     props: {
@@ -48,3 +48,5 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   }
 }
+
+export default Blog

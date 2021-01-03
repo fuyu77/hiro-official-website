@@ -3,11 +3,11 @@ import { getContactData } from '../lib/contact'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
 
-export default function Contact ({
-  contactData
-}: {
+interface Props {
   contactData: string
-}) {
+}
+
+const Contact: React.FC<Props> = ({ contactData }) => {
   return (
     <Layout activeTab="Contact">
       <Head>
@@ -22,7 +22,7 @@ export default function Contact ({
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const contactData = await getContactData()
   return {
     props: {
@@ -30,3 +30,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   }
 }
+
+export default Contact

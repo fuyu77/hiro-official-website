@@ -20,6 +20,7 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    'react/prop-types': 'off'
   },
   globals: {
     React: true

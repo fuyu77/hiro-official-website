@@ -5,15 +5,15 @@ import Date from '../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 
-export default function Post ({
-  postData
-}: {
+interface Props {
   postData: {
     title: string
     date: string
     contentHtml: string
   }
-}) {
+}
+
+const Post: React.FC<Props> = ({ postData }) => {
   return (
     <Layout activeTab="">
       <Head>
@@ -40,7 +40,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const postData = await getPostData((params as ParsedUrlQuery).id as string)
   return {
     props: {
@@ -48,3 +48,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   }
 }
+
+export default Post
