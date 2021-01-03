@@ -12,7 +12,6 @@ const Layout: React.FC<{ activeTab: string }> = ({ children, activeTab }) => {
           name="description"
           content="歌人・俳人の榊原紘／衿草遠馬の公式サイトです。掲載情報やブログなど。"
         />
-        <meta property="og:image" content="/images/profile.jpg" />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
