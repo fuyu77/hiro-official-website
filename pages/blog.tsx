@@ -18,6 +18,7 @@ const Blog: React.FC<Props> = ({ allPostsData }) => {
     <Layout activeTab="Blog">
       <Head>
         <title>{`Blog - ${siteTitle}`}</title>
+        <meta name="og:title" content={`Blog - ${siteTitle}`} />
       </Head>
       <div className="hero-body container">
         <section>

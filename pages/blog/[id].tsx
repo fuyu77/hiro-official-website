@@ -18,6 +18,7 @@ const Post: React.FC<Props> = ({ postData }) => {
     <Layout activeTab="">
       <Head>
         <title>{`${postData.title} - ${siteTitle}`}</title>
+        <meta name="og:title" content={`${postData.title} - ${siteTitle}`} />
       </Head>
         <div className="hero-body container is-max-desktop">
           <article className="content">

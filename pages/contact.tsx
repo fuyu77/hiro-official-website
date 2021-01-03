@@ -12,6 +12,7 @@ const Contact: React.FC<Props> = ({ contactData }) => {
     <Layout activeTab="Contact">
       <Head>
         <title>{`Contact - ${siteTitle}`}</title>
+        <meta name="og:title" content={`Contact - ${siteTitle}`} />
       </Head>
         <div className="hero-body container is-max-desktop">
           <article className="content">

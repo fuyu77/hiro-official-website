@@ -17,7 +17,8 @@ const News: React.FC<Props> = ({ allNewsData }) => {
   return (
     <Layout activeTab="News">
       <Head>
-        <title>{`Blog - ${siteTitle}`}</title>
+        <title>{`News - ${siteTitle}`}</title>
+        <meta name="og:title" content={`News - ${siteTitle}`} />
       </Head>
       <div className="hero-body container">
         <section>

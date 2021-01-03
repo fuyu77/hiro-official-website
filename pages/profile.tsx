@@ -25,6 +25,7 @@ const Profile: React.FC<Props> = ({ profileData }) => {
     <Layout activeTab="Profile">
       <Head>
         <title>{`Profile - ${siteTitle}`}</title>
+        <meta name="og:title" content={`Profile - ${siteTitle}`} />
       </Head>
         <div className="hero-body container is-max-desktop">
           <article className="content">
