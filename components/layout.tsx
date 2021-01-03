@@ -32,7 +32,7 @@ export default function Layout ({
         <header className="navbar">
           <div className="container">
             <div className="navbar-brand">
-              <div className="navbar-item title is-5">
+              <div className="navbar-item is-size-5">
                 <Link href="/">
                   <a className="has-text-dark">Hiro & Tohma&apos;s Official Website</a>
                 </Link>
