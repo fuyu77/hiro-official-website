@@ -37,11 +37,11 @@ const Profile: React.FC<Props> = ({ profileData }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const profileData = await getProfileData()
-  const mdxProfileData = await renderToString(profileData, { components })
+  const mdxProfileData = await getProfileData()
+  const htmlProfileData = await renderToString(mdxProfileData, { components })
   return {
     props: {
-      profileData: mdxProfileData
+      profileData: htmlProfileData
     }
   }
 }
