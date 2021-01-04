@@ -23,7 +23,7 @@ const Contact: React.FC<Props> = ({ contactData }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const contactData = await getContactData()
   return {
     props: {

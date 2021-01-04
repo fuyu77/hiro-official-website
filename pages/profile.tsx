@@ -36,7 +36,7 @@ const Profile: React.FC<Props> = ({ profileData }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const profileData = await getProfileData()
   const mdxProfileData = await renderToString(profileData, { components })
   return {
