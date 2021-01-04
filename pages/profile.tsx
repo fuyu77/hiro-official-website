@@ -10,7 +10,7 @@ import InlineWrapper from '../components/inline-wrapper'
 import InlineItem from '../components/inline-item'
 
 interface Props {
-  profileData: MdxRemote.Source
+  htmlContent: MdxRemote.Source
 }
 
 type Components = {
@@ -19,8 +19,8 @@ type Components = {
 
 const components: Components = { Image, InlineWrapper, InlineItem }
 
-const Profile: React.FC<Props> = ({ profileData }) => {
-  const content = hydrate(profileData, { components })
+const Profile: React.FC<Props> = ({ htmlContent }) => {
+  const content = hydrate(htmlContent, { components })
   return (
     <Layout activeTab="Profile">
       <Head>
@@ -37,11 +37,11 @@ const Profile: React.FC<Props> = ({ profileData }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const mdxProfileData = await getProfileData()
-  const htmlProfileData = await renderToString(mdxProfileData, { components })
+  const mdxContent = await getProfileData()
+  const htmlContent = await renderToString(mdxContent, { components })
   return {
     props: {
-      profileData: htmlProfileData
+      htmlContent
     }
   }
 }

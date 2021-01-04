@@ -4,16 +4,20 @@ import Head from 'next/head'
 import Date from '../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { ParsedUrlQuery } from 'querystring'
+import renderToString from 'next-mdx-remote/render-to-string'
+import hydrate from 'next-mdx-remote/hydrate'
+import { MdxRemote } from 'next-mdx-remote/types'
 
 interface Props {
   postData: {
     title: string
     date: string
-    contentHtml: string
+    htmlContent: MdxRemote.Source
   }
 }
 
 const Post: React.FC<Props> = ({ postData }) => {
+  const content = hydrate(postData.htmlContent, {})
   return (
     <Layout activeTab="">
       <Head>
@@ -26,7 +30,9 @@ const Post: React.FC<Props> = ({ postData }) => {
             <div>
               <Date dateString={postData.date} />
             </div>
-            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+            <div>
+              {content}
+            </div>
           </article>
         </div>
     </Layout>
@@ -43,9 +49,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const postData = await getPostData((params as ParsedUrlQuery).id as string)
+  const htmlContent = await renderToString(postData.mdxContent, {})
   return {
     props: {
-      postData
+      postData: {
+        title: postData.title,
+        date: postData.date,
+        htmlContent
+      }
     }
   }
 }

@@ -1,6 +1,4 @@
 import matter from 'gray-matter'
-import remark from 'remark'
-import html from 'remark-html'
 
 interface PostResponse {
   id: string
@@ -60,13 +58,8 @@ export const getPostData = async (id: string) => {
   )
     .then(response => response.json())
   const matterResult = matter(data.markdown)
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content)
-  const contentHtml = processedContent.toString()
   return {
-    id,
-    contentHtml,
+    mdxContent: matterResult.content,
     ...(matterResult.data as FrontMatter)
   }
 }

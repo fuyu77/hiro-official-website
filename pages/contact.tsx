@@ -2,12 +2,16 @@ import Layout, { siteTitle } from '../components/layout'
 import { getContactData } from '../lib/contact'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
+import renderToString from 'next-mdx-remote/render-to-string'
+import hydrate from 'next-mdx-remote/hydrate'
+import { MdxRemote } from 'next-mdx-remote/types'
 
 interface Props {
-  contactData: string
+  htmlContent: MdxRemote.Source
 }
 
-const Contact: React.FC<Props> = ({ contactData }) => {
+const Contact: React.FC<Props> = ({ htmlContent }) => {
+  const content = hydrate(htmlContent, {})
   return (
     <Layout activeTab="Contact">
       <Head>
@@ -16,7 +20,7 @@ const Contact: React.FC<Props> = ({ contactData }) => {
       </Head>
         <div className="hero-body container is-max-desktop">
           <article className="content">
-            <div dangerouslySetInnerHTML={{ __html: contactData }} />
+            {content}
           </article>
         </div>
     </Layout>
@@ -24,10 +28,11 @@ const Contact: React.FC<Props> = ({ contactData }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const contactData = await getContactData()
+  const mdxContent = await getContactData()
+  const htmlContent = await renderToString(mdxContent, {})
   return {
     props: {
-      contactData
+      htmlContent
     }
   }
 }
