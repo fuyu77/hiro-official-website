@@ -21,8 +21,8 @@ const Home: React.FC<Props> = ({ allTankasData }) => {
   useEffect(() => {
     const switchTankas = async () => {
       for (const tanka of allTankasData.slice(1)) {
-        if (tankaInput.current === null) return
         await new Promise(resolve => setTimeout(resolve, 3000))
+        if (tankaInput.current === null) return
         await fadeOut(tankaInput.current)
         setTanka(tanka.title)
         setSource(tanka.source)
