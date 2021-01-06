@@ -1,6 +1,10 @@
 @charset "utf-8";
 @import "../node_modules/bulma/bulma.sass";
 
+body, button, input, optgroup, select, textarea {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Hiragino Kaku Gothic ProN', 'Yu Gothic';
+}
+
 footer {
   background-color: white;
   position: fixed;
