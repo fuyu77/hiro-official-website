@@ -13,11 +13,7 @@ interface Props {
   htmlContent: MdxRemote.Source
 }
 
-type Components = {
-  [K in keyof MdxRemote.Components]: MdxRemote.Components[K] | typeof Image
-}
-
-const components: Components = { Image, InlineWrapper, InlineItem }
+const components: MdxRemote.Components = { Image, InlineWrapper, InlineItem }
 
 const Profile: React.FC<Props> = ({ htmlContent }) => {
   const content = hydrate(htmlContent, { components })
