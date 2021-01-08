@@ -1,4 +1,5 @@
 import matter from 'gray-matter'
+import { fetchMicroCMS } from './micro-cms'
 
 interface TankasResponse {
   contents: {
@@ -12,11 +13,7 @@ interface FrontMatter {
 }
 
 export const getTankasData = async () => {
-  const data: TankasResponse = await fetch(
-    'https://hiro-official-website.microcms.io/api/v1/tankas?limit=10000',
-    { headers: { 'X-API-KEY': process.env.MICROCMS_API_KEY as string } }
-  )
-    .then(response => response.json())
+  const data: TankasResponse = await fetchMicroCMS('tankas')
   return data.contents.map(content => {
     const matterResult = matter(content.markdown)
     return {

@@ -1,4 +1,5 @@
 import matter from 'gray-matter'
+import { fetchMicroCMS } from './micro-cms'
 
 interface NewsResponse {
   contents: {
@@ -14,11 +15,7 @@ interface FrontMatter {
 }
 
 export const getSortedNewsData = async () => {
-  const data: NewsResponse = await fetch(
-    'https://hiro-official-website.microcms.io/api/v1/news?limit=10000',
-    { headers: { 'X-API-KEY': process.env.MICROCMS_API_KEY as string } }
-  )
-    .then(response => response.json())
+  const data: NewsResponse = await fetchMicroCMS('news')
   const allNewsData = data.contents.map(content => {
     const matterResult = matter(content.markdown)
     return {

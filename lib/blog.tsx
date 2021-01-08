@@ -1,4 +1,5 @@
 import matter from 'gray-matter'
+import { fetchMicroCMS } from './micro-cms'
 
 interface PostResponse {
   id: string
@@ -14,11 +15,7 @@ interface FrontMatter {
 }
 
 export const getSortedPostsData = async () => {
-  const data: PostsResponse = await fetch(
-    'https://hiro-official-website.microcms.io/api/v1/posts?limit=10000',
-    { headers: { 'X-API-KEY': process.env.MICROCMS_API_KEY as string } }
-  )
-    .then(response => response.json())
+  const data: PostsResponse = await fetchMicroCMS('posts')
   const allPostsData = data.contents.map(content => {
     const id = content.id
     const matterResult = matter(content.markdown)
@@ -37,11 +34,7 @@ export const getSortedPostsData = async () => {
 }
 
 export const getAllPostIds = async () => {
-  const data: PostsResponse = await fetch(
-    'https://hiro-official-website.microcms.io/api/v1/posts?limit=10000',
-    { headers: { 'X-API-KEY': process.env.MICROCMS_API_KEY as string } }
-  )
-    .then(response => response.json())
+  const data: PostsResponse = await fetchMicroCMS('posts')
   return data.contents.map(content => {
     return {
       params: {
@@ -52,11 +45,7 @@ export const getAllPostIds = async () => {
 }
 
 export const getPostData = async (id: string) => {
-  const data: PostResponse = await fetch(
-    `https://hiro-official-website.microcms.io/api/v1/posts/${id}`,
-    { headers: { 'X-API-KEY': process.env.MICROCMS_API_KEY as string } }
-  )
-    .then(response => response.json())
+  const data: PostResponse = await fetchMicroCMS(`posts/${id}`)
   const matterResult = matter(data.markdown)
   return {
     mdxContent: matterResult.content,
