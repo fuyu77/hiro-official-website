@@ -20,17 +20,16 @@ const Home: React.FC<Props> = ({ allTankasData }) => {
 
   useEffect(() => {
     const switchTankas = async () => {
+      if (tankaInput.current === null) return
       for (const tanka of allTankasData.slice(1)) {
         await new Promise(resolve => setTimeout(resolve, 3000))
-        if (tankaInput.current === null) return
         await fadeOut(tankaInput.current)
         setTanka(tanka.title)
         setSource(tanka.source)
-        if (tankaInput.current === null) return
         await fadeIn(tankaInput.current)
       }
     }
-    switchTankas()
+    switchTankas().catch(e => {})
   }, [])
 
   return (
