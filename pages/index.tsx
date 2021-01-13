@@ -29,7 +29,7 @@ const Home: React.FC<Props> = ({ allTankasData }) => {
         await fadeIn(tankaInput.current, 2000)
       }
     }
-    switchTankas().catch(e => {})
+    switchTankas().catch(e => console.log(e.message))
   }, [])
 
   return (
