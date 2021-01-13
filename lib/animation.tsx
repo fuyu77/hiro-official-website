@@ -1,4 +1,3 @@
-
 export const fadeIn = async (element: HTMLDivElement, duration: number) => {
   let opacity = 0
   const start = performance.now()
