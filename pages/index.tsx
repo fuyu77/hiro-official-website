@@ -5,6 +5,7 @@ import styles from './index.module.scss'
 import { getTankasData } from '../lib/tanka'
 import { GetStaticProps } from 'next'
 import { fadeIn, fadeOut } from '../lib/animation'
+import { shuffle } from '../lib/util'
 
 interface Props {
   allTankasData: {
@@ -15,18 +16,20 @@ interface Props {
 
 const Home: React.FC<Props> = ({ allTankasData }) => {
   const tankaInput = useRef<HTMLDivElement>(null)
-  const [tanka, setTanka] = useState(allTankasData[0].title)
-  const [source, setSource] = useState(allTankasData[0].source)
+  const tankas = shuffle(allTankasData)
+  const [tanka, setTanka] = useState(tankas[0].title)
+  const [source, setSource] = useState(tankas[0].source)
 
   useEffect(() => {
     (async () => {
       if (tankaInput.current === null) return
-      for (const tanka of allTankasData.slice(1)) {
-        await new Promise(resolve => setTimeout(resolve, 3000))
+      for (const tanka of tankas.slice(1)) {
+        await new Promise(resolve => setTimeout(resolve, 1000))
         await fadeOut(tankaInput.current, 2000)
         setTanka(tanka.title)
         setSource(tanka.source)
         await fadeIn(tankaInput.current, 2000)
+        await new Promise(resolve => setTimeout(resolve, 1000))
       }
     })().catch(e => console.log(e.message))
   }, [])
