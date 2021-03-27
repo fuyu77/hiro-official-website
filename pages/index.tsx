@@ -21,31 +21,27 @@ const Home: React.FC<Props> = ({ allTankasData }) => {
   const [source, setSource] = useState(tankas[0].source)
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       if (tankaInput.current === null) return
       for (const tanka of tankas.slice(1)) {
-        await new Promise(resolve => setTimeout(resolve, 1000))
+        await new Promise((resolve) => setTimeout(resolve, 1000))
         await fadeOut(tankaInput.current, 2000)
         setTanka(tanka.title)
         setSource(tanka.source)
         await fadeIn(tankaInput.current, 2000)
-        await new Promise(resolve => setTimeout(resolve, 1000))
+        await new Promise((resolve) => setTimeout(resolve, 1000))
       }
-    })().catch(e => console.log(e.message))
+    })().catch((e) => console.log(e.message))
   }, [])
 
   return (
-    <Layout activeTab="">
+    <Layout activeTab=''>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <div className={`${styles.tankaWrapper} is-size-6`} ref={tankaInput}>
-        <div className={styles.tankaItem} >
-          {tanka}
-        </div>
-        <div className={styles.tankaItem} >
-          {source}
-        </div>
+        <div className={styles.tankaItem}>{tanka}</div>
+        <div className={styles.tankaItem}>{source}</div>
       </div>
     </Layout>
   )

@@ -18,16 +18,14 @@ const components: MdxRemote.Components = { Image, InlineWrapper, InlineItem }
 const Profile: React.FC<Props> = ({ htmlContent }) => {
   const content = hydrate(htmlContent, { components })
   return (
-    <Layout activeTab="Profile">
+    <Layout activeTab='Profile'>
       <Head>
         <title>{`Profile - ${siteTitle}`}</title>
-        <meta name="og:title" content={`Profile - ${siteTitle}`} />
+        <meta name='og:title' content={`Profile - ${siteTitle}`} />
       </Head>
-        <div className="hero-body container is-max-desktop">
-          <article className="content">
-            {content}
-          </article>
-        </div>
+      <div className='hero-body container is-max-desktop'>
+        <article className='content'>{content}</article>
+      </div>
     </Layout>
   )
 }

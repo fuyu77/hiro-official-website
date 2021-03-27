@@ -15,21 +15,26 @@ interface Props {
 
 const News: React.FC<Props> = ({ allNewsData }) => {
   return (
-    <Layout activeTab="News">
+    <Layout activeTab='News'>
       <Head>
         <title>{`News - ${siteTitle}`}</title>
-        <meta name="og:title" content={`News - ${siteTitle}`} />
+        <meta name='og:title' content={`News - ${siteTitle}`} />
       </Head>
-      <div className="hero-body container">
+      <div className='hero-body container'>
         <section>
           <ul>
             {allNewsData.map(({ id, date, title, url }) => (
-              <li key={id} className="mb-2">
+              <li key={id} className='mb-2'>
                 <small>
                   <Date dateString={date} />
                 </small>
                 <br />
-                <a className="has-text-weight-semibold is-size-5 has-text-dark" href={url}>{title}</a>
+                <a
+                  className='has-text-weight-semibold is-size-5 has-text-dark'
+                  href={url}
+                >
+                  {title}
+                </a>
               </li>
             ))}
           </ul>

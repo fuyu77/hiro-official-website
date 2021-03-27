@@ -16,7 +16,7 @@ interface FrontMatter {
 
 export const getSortedNewsData = async () => {
   const data: NewsResponse = await fetchMicroCMS('news')
-  const allNewsData = data.contents.map(content => {
+  const allNewsData = data.contents.map((content) => {
     const matterResult = matter(content.markdown)
     return {
       id: content.id,

@@ -13,16 +13,14 @@ interface Props {
 const Contact: React.FC<Props> = ({ htmlContent }) => {
   const content = hydrate(htmlContent, {})
   return (
-    <Layout activeTab="Contact">
+    <Layout activeTab='Contact'>
       <Head>
         <title>{`Contact - ${siteTitle}`}</title>
-        <meta name="og:title" content={`Contact - ${siteTitle}`} />
+        <meta name='og:title' content={`Contact - ${siteTitle}`} />
       </Head>
-        <div className="hero-body container is-max-desktop">
-          <article className="content">
-            {content}
-          </article>
-        </div>
+      <div className='hero-body container is-max-desktop'>
+        <article className='content'>{content}</article>
+      </div>
     </Layout>
   )
 }
