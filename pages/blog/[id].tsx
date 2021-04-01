@@ -7,6 +7,7 @@ import { ParsedUrlQuery } from 'querystring'
 import renderToString from 'next-mdx-remote/render-to-string'
 import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
+import Pdf from '../../components/pdf'
 
 interface Props {
   postData: {
@@ -16,25 +17,25 @@ interface Props {
   }
 }
 
+const components: MdxRemote.Components = { Pdf }
+
 const Post: React.FC<Props> = ({ postData }) => {
-  const content = hydrate(postData.htmlContent, {})
+  const content = hydrate(postData.htmlContent, { components })
   return (
-    <Layout activeTab="">
+    <Layout activeTab=''>
       <Head>
         <title>{`${postData.title} - ${siteTitle}`}</title>
-        <meta name="og:title" content={`${postData.title} - ${siteTitle}`} />
+        <meta name='og:title' content={`${postData.title} - ${siteTitle}`} />
       </Head>
-        <div className="hero-body container is-max-desktop">
-          <article className="content">
-            <h1>{postData.title}</h1>
-            <div>
-              <Date dateString={postData.date} />
-            </div>
-            <div>
-              {content}
-            </div>
-          </article>
-        </div>
+      <div className='hero-body container is-max-desktop'>
+        <article className='content'>
+          <h1>{postData.title}</h1>
+          <div>
+            <Date dateString={postData.date} />
+          </div>
+          <div>{content}</div>
+        </article>
+      </div>
     </Layout>
   )
 }
