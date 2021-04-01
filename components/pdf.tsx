@@ -6,7 +6,7 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css'
 const Pdf: React.FC<{ url: string }> = ({ url }) => {
   const defaultLayoutPluginInstance = defaultLayoutPlugin()
   return (
-    <Worker workerUrl='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js'>
+    <Worker workerUrl='https://unpkg.com/pdfjs-dist@2.6.347/es5/build/pdf.worker.min.js'>
       <Viewer fileUrl={url} plugins={[defaultLayoutPluginInstance]} />
     </Worker>
   )
