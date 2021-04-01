@@ -19,22 +19,20 @@ interface Props {
 const Post: React.FC<Props> = ({ postData }) => {
   const content = hydrate(postData.htmlContent, {})
   return (
-    <Layout activeTab="">
+    <Layout activeTab=''>
       <Head>
         <title>{`${postData.title} - ${siteTitle}`}</title>
-        <meta name="og:title" content={`${postData.title} - ${siteTitle}`} />
+        <meta name='og:title' content={`${postData.title} - ${siteTitle}`} />
       </Head>
-        <div className="hero-body container is-max-desktop">
-          <article className="content">
-            <h1>{postData.title}</h1>
-            <div>
-              <Date dateString={postData.date} />
-            </div>
-            <div>
-              {content}
-            </div>
-          </article>
-        </div>
+      <div className='hero-body container is-max-desktop'>
+        <article className='content'>
+          <h1>{postData.title}</h1>
+          <div>
+            <Date dateString={postData.date} />
+          </div>
+          <div>{content}</div>
+        </article>
+      </div>
     </Layout>
   )
 }
