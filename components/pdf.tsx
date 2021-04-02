@@ -5,7 +5,7 @@ import pdfWorker from '../pdf-worker'
 const Pdf: React.FC<{ url: string }> = ({ url }) => {
   return (
     <Worker workerUrl={`/${pdfWorker}`}>
-      <Viewer fileUrl={url} />
+      <Viewer fileUrl={url} defaultScale={1} />
     </Worker>
   )
 }
