@@ -1,1 +1,1 @@
-module.exports = require('pdfjs-dist/build/pdf.worker.min.js')
+module.exports = require('pdfjs-dist/es5/build/pdf.worker.min.js')
