@@ -5,7 +5,6 @@ module.exports = {
   webpack: (config) => {
     config.module.rules.push({
       test: /pdf\.worker\.min\.js/,
-      exclude: /node_modules\/pdfjs-dist\/build/,
       use: [
         {
           loader: 'file-loader',
