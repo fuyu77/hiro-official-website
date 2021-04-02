@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@react-pdf-viewer/core": ">=2.4.1",
-    "@react-pdf-viewer/default-layout": ">=2.4.1",
     "bulma": ">=0.9.1",
     "date-fns": ">=2.16.1",
     "gray-matter": ">=4.0.2",
