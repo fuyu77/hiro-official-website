@@ -1,8 +1,13 @@
 import styles from './inline-item.module.scss'
 
-const InlineItem: React.FC<{ number: number }> = ({ children, number }) => {
+const InlineItem: React.FC<{ itemWidth?: string }> = ({
+  children,
+  itemWidth
+}) => {
   return (
-    <div className={number === 1 ? styles.one : styles.two}>{children}</div>
+    <div className={itemWidth === '100%' ? styles.full : styles.half}>
+      {children}
+    </div>
   )
 }
 
