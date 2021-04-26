@@ -5,7 +5,7 @@ const InlineItem: React.FC<{ itemWidth?: string }> = ({
   itemWidth
 }) => {
   return (
-    <div className={itemWidth === '100%' ? styles.full : styles.half}>
+    <div className={itemWidth === 'full' ? styles.full : styles.half}>
       {children}
     </div>
   )
