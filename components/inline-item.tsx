@@ -1,7 +1,9 @@
 import styles from './inline-item.module.scss'
 
-const InlineItem: React.FC = ({ children }) => {
-  return <div className={styles.item}>{children}</div>
+const InlineItem: React.FC<{ number: number }> = ({ children, number }) => {
+  return (
+    <div className={number === 1 ? styles.one : styles.two}>{children}</div>
+  )
 }
 
 export default InlineItem
