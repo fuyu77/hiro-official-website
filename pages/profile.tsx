@@ -2,21 +2,19 @@ import Layout, { siteTitle } from '../components/layout'
 import { getProfileData } from '../lib/profile'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import renderToString from 'next-mdx-remote/render-to-string'
-import hydrate from 'next-mdx-remote/hydrate'
-import { MdxRemote } from 'next-mdx-remote/types'
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import Image from 'next/image'
 import InlineWrapper from '../components/inline-wrapper'
 import InlineItem from '../components/inline-item'
 
 interface Props {
-  htmlContent: MdxRemote.Source
+  mdxSource: MDXRemoteSerializeResult
 }
 
-const components: MdxRemote.Components = { Image, InlineWrapper, InlineItem }
+const components = { Image, InlineWrapper, InlineItem }
 
-const Profile: React.FC<Props> = ({ htmlContent }) => {
-  const content = hydrate(htmlContent, { components })
+const Profile: React.FC<Props> = ({ mdxSource }) => {
   return (
     <Layout activeTab='Profile'>
       <Head>
@@ -24,18 +22,20 @@ const Profile: React.FC<Props> = ({ htmlContent }) => {
         <meta name='og:title' content={`Profile - ${siteTitle}`} />
       </Head>
       <div className='hero-body container is-max-desktop'>
-        <article className='content'>{content}</article>
+        <article className='content'>
+          <MDXRemote {...mdxSource} components={components} />
+        </article>
       </div>
     </Layout>
   )
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const mdxContent = await getProfileData()
-  const htmlContent = await renderToString(mdxContent, { components })
+  const source = await getProfileData()
+  const mdxSource = await serialize(source)
   return {
     props: {
-      htmlContent
+      mdxSource
     }
   }
 }
