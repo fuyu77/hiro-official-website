@@ -1,1 +1,1 @@
-export default require('pdfjs-dist/es5/build/pdf.worker.min.js').default
+export default require('pdfjs-dist/legacy/build/pdf.worker.min.js').default
