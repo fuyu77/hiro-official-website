@@ -2,19 +2,15 @@ import Layout, { siteTitle } from '../components/layout'
 import { getProfileData } from '../lib/profile'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import { serialize } from 'next-mdx-remote/serialize'
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
 import InlineWrapper from '../components/inline-wrapper'
 import InlineItem from '../components/inline-item'
-
-interface Props {
-  mdxSource: MDXRemoteSerializeResult
-}
+import { ProfileProps } from '../additional'
 
 const components = { Image, InlineWrapper, InlineItem }
 
-const Profile: React.FC<Props> = ({ mdxSource }) => {
+const Profile: React.FC<ProfileProps> = ({ mdxSource }) => {
   return (
     <Layout activeTab='Profile'>
       <Head>
@@ -30,9 +26,8 @@ const Profile: React.FC<Props> = ({ mdxSource }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const source = await getProfileData()
-  const mdxSource = await serialize(source)
+export const getStaticProps: GetStaticProps<ProfileProps> = async () => {
+  const mdxSource = await getProfileData()
   return {
     props: {
       mdxSource

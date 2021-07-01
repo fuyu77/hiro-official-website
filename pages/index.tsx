@@ -6,17 +6,11 @@ import { getTankasData } from '../lib/tanka'
 import { GetStaticProps } from 'next'
 import { fadeIn, fadeOut } from '../lib/animation'
 import { shuffle } from '../lib/util'
+import { IndexProps } from '../additional'
 
-interface Props {
-  allTankasData: {
-    title: string
-    source: string
-  }[]
-}
-
-const Home: React.FC<Props> = ({ allTankasData }) => {
+const Home: React.FC<IndexProps> = ({ tankasData }) => {
   const tankaInput = useRef<HTMLDivElement>(null)
-  const tankas = shuffle(allTankasData)
+  const tankas = shuffle(tankasData)
   const [tanka, setTanka] = useState(tankas[0].title)
   const [source, setSource] = useState(tankas[0].source)
 
@@ -32,7 +26,7 @@ const Home: React.FC<Props> = ({ allTankasData }) => {
         await new Promise((resolve) => setTimeout(resolve, 1000))
       }
     })().catch((e) => console.log(e.message))
-  }, [])
+  }, [tankas])
 
   return (
     <Layout activeTab=''>
@@ -47,11 +41,11 @@ const Home: React.FC<Props> = ({ allTankasData }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const allTankasData = await getTankasData()
+export const getStaticProps: GetStaticProps<IndexProps> = async () => {
+  const tankasData = await getTankasData()
   return {
     props: {
-      allTankasData
+      tankasData
     }
   }
 }

@@ -1,5 +1,6 @@
 import matter from 'gray-matter'
 import { fetchMicroCMS } from './micro-cms'
+import { News } from '../additional'
 
 interface NewsResponse {
   contents: {
@@ -14,7 +15,7 @@ interface FrontMatter {
   url: string
 }
 
-export const getSortedNewsData = async () => {
+export const getSortedNewsData = async (): Promise<News[]> => {
   const data: NewsResponse = await fetchMicroCMS('news')
   const allNewsData = data.contents.map((content) => {
     const matterResult = matter(content.markdown)

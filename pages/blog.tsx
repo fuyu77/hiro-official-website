@@ -4,16 +4,9 @@ import Date from '../components/date'
 import Layout, { siteTitle } from '../components/layout'
 import { getSortedPostsData } from '../lib/blog'
 import { GetStaticProps } from 'next'
+import { BlogProps } from '../additional'
 
-interface Props {
-  allPostsData: {
-    date: string
-    title: string
-    id: string
-  }[]
-}
-
-const Blog: React.FC<Props> = ({ allPostsData }) => {
+const Blog: React.FC<BlogProps> = ({ allPostsData }) => {
   return (
     <Layout activeTab='Blog'>
       <Head>
@@ -30,9 +23,7 @@ const Blog: React.FC<Props> = ({ allPostsData }) => {
                 </small>
                 <br />
                 <Link href={`/blog/${id}`}>
-                  <a className='has-text-weight-semibold is-size-5 has-text-dark'>
-                    {title}
-                  </a>
+                  <a className='has-text-weight-semibold is-size-5 has-text-dark'>{title}</a>
                 </Link>
               </li>
             ))}
@@ -43,7 +34,7 @@ const Blog: React.FC<Props> = ({ allPostsData }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<BlogProps> = async () => {
   const allPostsData = await getSortedPostsData()
   return {
     props: {

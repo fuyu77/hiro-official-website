@@ -2,16 +2,12 @@ import Layout, { siteTitle } from '../components/layout'
 import { getContactData } from '../lib/contact'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import { serialize } from 'next-mdx-remote/serialize'
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
-
-interface Props {
-  mdxSource: MDXRemoteSerializeResult
-}
+import { MDXRemote } from 'next-mdx-remote'
+import { ContactProps } from '../additional'
 
 const components = {}
 
-const Contact: React.FC<Props> = ({ mdxSource }) => {
+const Contact: React.FC<ContactProps> = ({ mdxSource }) => {
   return (
     <Layout activeTab='Contact'>
       <Head>
@@ -27,9 +23,8 @@ const Contact: React.FC<Props> = ({ mdxSource }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const source = await getContactData()
-  const mdxSource = await serialize(source)
+export const getStaticProps: GetStaticProps<ContactProps> = async () => {
+  const mdxSource = await getContactData()
   return {
     props: {
       mdxSource

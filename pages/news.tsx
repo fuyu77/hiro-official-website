@@ -3,17 +3,9 @@ import Date from '../components/date'
 import Layout, { siteTitle } from '../components/layout'
 import { getSortedNewsData } from '../lib/news'
 import { GetStaticProps } from 'next'
+import { NewsProps } from '../additional'
 
-interface Props {
-  allNewsData: {
-    id: string
-    date: string
-    title: string
-    url: string
-  }[]
-}
-
-const News: React.FC<Props> = ({ allNewsData }) => {
+const News: React.FC<NewsProps> = ({ allNewsData }) => {
   return (
     <Layout activeTab='News'>
       <Head>
@@ -29,10 +21,7 @@ const News: React.FC<Props> = ({ allNewsData }) => {
                   <Date dateString={date} />
                 </small>
                 <br />
-                <a
-                  className='has-text-weight-semibold is-size-5 has-text-dark'
-                  href={url}
-                >
+                <a className='has-text-weight-semibold is-size-5 has-text-dark' href={url}>
                   {title}
                 </a>
               </li>
@@ -44,7 +33,7 @@ const News: React.FC<Props> = ({ allNewsData }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<NewsProps> = async () => {
   const allNewsData = await getSortedNewsData()
   return {
     props: {

@@ -1,5 +1,7 @@
 import matter from 'gray-matter'
+import { Blog, BlogData } from '../additional'
 import { fetchMicroCMS } from './micro-cms'
+import { serialize } from 'next-mdx-remote/serialize'
 
 interface PostResponse {
   id: string
@@ -14,7 +16,7 @@ interface FrontMatter {
   title: string
 }
 
-export const getSortedPostsData = async () => {
+export const getSortedPostsData = async (): Promise<BlogData[]> => {
   const data: PostsResponse = await fetchMicroCMS('posts')
   const allPostsData = data.contents.map((content) => {
     const id = content.id
@@ -33,22 +35,19 @@ export const getSortedPostsData = async () => {
   })
 }
 
-export const getAllPostIds = async () => {
+export const getAllPostIds = async (): Promise<BlogData['id'][]> => {
   const data: PostsResponse = await fetchMicroCMS('posts')
   return data.contents.map((content) => {
-    return {
-      params: {
-        id: content.id
-      }
-    }
+    return content.id
   })
 }
 
-export const getPostData = async (id: string) => {
+export const getPostData = async (id: string): Promise<Blog> => {
   const data: PostResponse = await fetchMicroCMS(`posts/${id}`)
   const matterResult = matter(data.markdown)
+  const mdxSource = await serialize(matterResult.content)
   return {
-    mdxContent: matterResult.content,
+    mdxSource,
     ...(matterResult.data as FrontMatter)
   }
 }
