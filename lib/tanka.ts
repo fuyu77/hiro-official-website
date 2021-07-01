@@ -3,9 +3,9 @@ import { fetchMicroCMS } from './micro-cms'
 import { Tanka } from '../additional'
 
 interface TankasResponse {
-  contents: {
+  contents: Array<{
     markdown: string
-  }[]
+  }>
 }
 
 interface FrontMatter {

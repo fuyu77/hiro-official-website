@@ -3,10 +3,10 @@ import { fetchMicroCMS } from './micro-cms'
 import { News } from '../additional'
 
 interface NewsResponse {
-  contents: {
+  contents: Array<{
     id: string
     markdown: string
-  }[]
+  }>
 }
 
 interface FrontMatter {

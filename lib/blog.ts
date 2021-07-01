@@ -35,7 +35,7 @@ export const getSortedPostsData = async (): Promise<BlogData[]> => {
   })
 }
 
-export const getAllPostIds = async (): Promise<BlogData['id'][]> => {
+export const getAllPostIds = async (): Promise<Array<BlogData['id']>> => {
   const data: PostsResponse = await fetchMicroCMS('posts')
   return data.contents.map((content) => {
     return content.id
