@@ -6,17 +6,24 @@ import { getTankasData } from '../lib/tanka'
 import { GetStaticProps } from 'next'
 import { fadeIn, fadeOut } from '../lib/animation'
 import { shuffle } from '../lib/util'
-import { IndexProps } from '../additional'
+import { IndexProps, Tanka } from '../additional'
 
 const Home: React.FC<IndexProps> = ({ tankasData }) => {
   const tankaInput = useRef<HTMLDivElement>(null)
-  const tankas = shuffle(tankasData)
-  const [tanka, setTanka] = useState(tankas[0].title)
-  const [source, setSource] = useState(tankas[0].source)
+  const [tankas, setTankas] = useState<Tanka[]>([])
+  const [tanka, setTanka] = useState<string>('')
+  const [source, setSource] = useState<string>('')
+
+  useEffect(() => {
+    const shuffledTankas = shuffle(tankasData)
+    setTankas(shuffledTankas)
+    setTanka(shuffledTankas[0].title)
+    setSource(shuffledTankas[0].source)
+  }, [tankasData])
 
   useEffect(() => {
     ;(async () => {
-      if (tankaInput.current === null) return
+      if (tankaInput.current === null || tankas.length === 0) return
       for (const tanka of tankas.slice(1)) {
         await new Promise((resolve) => setTimeout(resolve, 1000))
         await fadeOut(tankaInput.current, 2000)
