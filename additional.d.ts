@@ -28,22 +28,23 @@ interface ProfileProps {
   mdxSource: MDXRemoteSerializeResult
 }
 
-interface BlogData {
+interface Blog {
   id: string
   date: string
   title: string
 }
 
 interface BlogProps {
-  allPostsData: BlogData[]
+  allPostsData: Blog[]
 }
 
-interface Blog {
+interface Post {
   title: string
   date: string
+  private: boolean
   mdxSource: MDXRemoteSerializeResult
 }
 
-interface BlogsProps {
-  postData: Blog
+interface PostProps {
+  postData: Post
 }

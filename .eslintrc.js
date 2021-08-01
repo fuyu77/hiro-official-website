@@ -21,6 +21,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    'multiline-ternary': 'off',
     '@typescript-eslint/no-extra-semi': 'off'
   },
   globals: {

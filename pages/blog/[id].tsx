@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Layout, { siteTitle } from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/blog'
 import Head from 'next/head'
@@ -9,7 +10,7 @@ import Pdf from '../../components/pdf'
 import Image from 'next/image'
 import InlineWrapper from '../../components/inline-wrapper'
 import InlineItem from '../../components/inline-item'
-import { BlogsProps } from '../../additional'
+import { PostProps } from '../../additional'
 
 const components = {
   Image,
@@ -18,7 +19,15 @@ const components = {
   InlineItem
 }
 
-const Post: React.FC<BlogsProps> = ({ postData }) => {
+const Post: React.FC<PostProps> = ({ postData }) => {
+  const [verified, setVerified] = useState<boolean>(false)
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    if (event.target.value === process.env.NEXT_PUBLIC_BLOG_PASSWORD) {
+      setVerified(true)
+    }
+  }
+
   return (
     <Layout activeTab=''>
       <Head>
@@ -27,13 +36,29 @@ const Post: React.FC<BlogsProps> = ({ postData }) => {
       </Head>
       <div className='hero-body container is-max-desktop'>
         <article className='content'>
-          <h1>{postData.title}</h1>
-          <div>
-            <Date dateString={postData.date} />
-          </div>
-          <div>
-            <MDXRemote {...postData.mdxSource} components={components} />
-          </div>
+          {!postData.private || verified ? (
+            <div>
+              <h1>{postData.title}</h1>
+              <div>
+                <Date dateString={postData.date} />
+              </div>
+              <div>
+                <MDXRemote {...postData.mdxSource} components={components} />
+              </div>
+            </div>
+          ) : (
+            <div>
+              <label className='label'>パスワード</label>
+              <div className='control'>
+                <input
+                  className='input'
+                  type='text'
+                  placeholder='入力してください'
+                  onChange={onChange}
+                />
+              </div>
+            </div>
+          )}
         </article>
       </div>
     </Layout>
@@ -54,13 +79,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<BlogsProps> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
   const postData = await getPostData((params as ParsedUrlQuery).id as string)
   return {
     props: {
       postData: {
         title: postData.title,
         date: postData.date,
+        private: postData.private,
         mdxSource: postData.mdxSource
       }
     }
