@@ -38,10 +38,8 @@ const Post: React.FC<PostProps> = ({ postData }) => {
         <article className='content'>
           {!postData.private || verified ? (
             <div>
+              <Date dateString={postData.date} />
               <h1>{postData.title}</h1>
-              <div>
-                <Date dateString={postData.date} />
-              </div>
               <div>
                 <MDXRemote {...postData.mdxSource} components={components} />
               </div>

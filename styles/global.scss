@@ -48,6 +48,11 @@ footer {
 
   h1 {
     font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h1:not(:first-child) {
+    margin-top: 0.5rem;
   }
 
   h2 {
@@ -55,9 +60,11 @@ footer {
     padding: 0.5rem;
     border-left: solid 5px green;
     border-bottom: solid 1px green;
+    margin-bottom: 1.5rem;
   }
 
   h3 {
     font-size: 1.1rem;
+    margin-bottom: 1.5rem;
   }
 }
