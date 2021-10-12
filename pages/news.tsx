@@ -21,7 +21,12 @@ const News: React.FC<NewsProps> = ({ allNewsData }) => {
                   <Date dateString={date} />
                 </small>
                 <br />
-                <a className='has-text-weight-semibold is-size-5 has-text-dark' href={url}>
+                <a
+                  className='has-text-weight-semibold is-size-5 has-text-dark'
+                  href={url}
+                  rel='noreferrer'
+                  target='_blank'
+                >
                   {title}
                 </a>
               </li>
