@@ -14,7 +14,7 @@ const Layout: React.FC<{ activeTab: string }> = ({ children, activeTab }) => {
         />
         <meta
           property='og:image'
-          content='https://hiro-tohma-official-website.com/_next/image?url=%2Fimages%2Fogp.jpg&w=1200&q=75'
+          content='https://hiro-tohma-official-website.com/_next/image?url=%2Fimages%2Fogp.png&w=1200&q=75'
         />
         <meta name='og:title' content={siteTitle} />
         <meta name='twitter:card' content='summary_large_image' />
