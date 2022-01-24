@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export const siteTitle = '榊原紘／衿草遠馬｜Official Website'
+export const siteTitle = '榊原紘／遠馬｜Official Website'
 
 const Layout: React.FC<{ activeTab: string }> = ({ children, activeTab }) => {
   return (
@@ -10,7 +10,7 @@ const Layout: React.FC<{ activeTab: string }> = ({ children, activeTab }) => {
         <link rel='icon' href='/favicon.ico' />
         <meta
           name='description'
-          content='歌人・俳人の榊原紘／衿草遠馬の公式サイトです。掲載情報やブログなど。'
+          content='歌人・俳人の榊原紘／遠馬の公式サイトです。掲載情報やブログなど。'
         />
         <meta
           property='og:image'
