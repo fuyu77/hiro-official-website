@@ -13,7 +13,7 @@
     "bulma": "^0.9.3",
     "date-fns": "^2.25.0",
     "gray-matter": "^4.0.3",
-    "next": "^12.0.2",
+    "next": "^12.0.9",
     "next-mdx-remote": "^3.0.8",
     "pdfjs-dist": "2.10.377",
     "react": "^17.0.2",
