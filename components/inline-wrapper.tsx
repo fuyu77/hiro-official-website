@@ -1,6 +1,10 @@
 import styles from './inline-wrapper.module.scss'
 
-const InlineWrapper: React.FC = ({ children }) => {
+interface Props {
+  children: React.ReactNode
+}
+
+const InlineWrapper = ({ children }: Props): React.ReactElement => {
   return <div className={styles.wrapper}>{children}</div>
 }
 
