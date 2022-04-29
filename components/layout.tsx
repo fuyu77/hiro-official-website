@@ -1,9 +1,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
+interface Props {
+  children: React.ReactNode
+  activeTab: string
+}
+
 export const siteTitle = '榊原紘／遠馬｜Official Website'
 
-const Layout: React.FC<{ activeTab: string }> = ({ children, activeTab }) => {
+const Layout: React.FC<Props> = ({ children, activeTab }) => {
   return (
     <section className='hero is-fullheight'>
       <Head>
