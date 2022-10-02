@@ -1,5 +1,5 @@
 import matter from 'gray-matter'
-import { Post, Blog } from '../additional'
+import { Post, Blog, BlogByYear } from '../additional'
 import { fetchMicroCMS } from './micro-cms'
 import { serialize } from 'next-mdx-remote/serialize'
 
@@ -17,7 +17,7 @@ interface FrontMatter {
   private?: boolean
 }
 
-export const getSortedPostsData = async (): Promise<Blog[]> => {
+export const getSortedPostsData = async (): Promise<BlogByYear> => {
   const data: PostsResponse = await fetchMicroCMS('posts')
   const allPostsData = data.contents.map((content) => {
     const id = content.id
@@ -27,13 +27,20 @@ export const getSortedPostsData = async (): Promise<Blog[]> => {
       ...(matterResult.data as FrontMatter)
     }
   })
-  return allPostsData.sort((a, b) => {
+  allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1
     } else {
       return -1
     }
   })
+  return allPostsData.reduce<BlogByYear>((result, post) => {
+    const year = post.date.slice(0, 4)
+    return {
+      ...result,
+      [year]: result[year] !== undefined ? [...result[year], post] : [post]
+    }
+  }, {})
 }
 
 export const getAllPostIds = async (): Promise<Array<Blog['id']>> => {
