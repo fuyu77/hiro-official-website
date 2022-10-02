@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2022: true
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
@@ -15,7 +15,6 @@ module.exports = {
     ecmaFeatures: {
       jsx: true
     },
-    ecmaVersion: 2021,
     sourceType: 'module',
     project: './tsconfig.json'
   },
