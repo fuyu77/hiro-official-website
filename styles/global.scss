@@ -20,6 +20,12 @@ footer {
   color: #4a4a4a !important;
 }
 
+.pagination-link.is-current {
+  background-color: palegreen;
+  border-color: hsl(0deg, 0%, 86%);
+  color: #4a4a4a;
+}
+
 .tabs.is-boxed a:hover {
   background-color: palegreen;
 }

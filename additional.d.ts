@@ -16,8 +16,13 @@ interface News {
   url: string
 }
 
+interface NewsByYear {
+  [year: string]: News[]
+}
+
 interface NewsProps {
-  allNewsData: News[]
+  allNewsData: NewsByYear
+  years: string[]
 }
 
 interface ContactProps {
@@ -34,8 +39,13 @@ interface Blog {
   title: string
 }
 
+interface BlogByYear {
+  [year: string]: Blog[]
+}
+
 interface BlogProps {
-  allPostsData: Blog[]
+  allPostsData: BlogByYear
+  years: string[]
 }
 
 interface Post {

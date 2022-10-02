@@ -1,11 +1,14 @@
 import Head from 'next/head'
+import { useState } from 'react'
 import Date from '../components/date'
 import Layout, { siteTitle } from '../components/layout'
 import { getSortedNewsData } from '../lib/news'
 import { GetStaticProps } from 'next'
 import { NewsProps } from '../additional'
 
-const News: React.FC<NewsProps> = ({ allNewsData }) => {
+const News: React.FC<NewsProps> = ({ allNewsData, years }) => {
+  const [currentYear, setCurrentYear] = useState<string>(years[0])
+
   return (
     <Layout activeTab='News'>
       <Head>
@@ -14,8 +17,23 @@ const News: React.FC<NewsProps> = ({ allNewsData }) => {
       </Head>
       <div className='hero-body container'>
         <section>
+          <nav className='pagination' role='navigation'>
+            <ul className='pagination-list'>
+              {years.map((year) => {
+                return (
+                  <div
+                    className={`pagination-link ${currentYear === year ? 'is-current' : ''}`}
+                    key={year}
+                    onClick={() => setCurrentYear(year)}
+                  >
+                    {year}
+                  </div>
+                )
+              })}
+            </ul>
+          </nav>
           <ul>
-            {allNewsData.map(({ id, date, title, url }) => (
+            {allNewsData[currentYear].map(({ id, date, title, url }) => (
               <li key={id} className='mb-2'>
                 <small>
                   <Date dateString={date} />
@@ -42,7 +60,14 @@ export const getStaticProps: GetStaticProps<NewsProps> = async () => {
   const allNewsData = await getSortedNewsData()
   return {
     props: {
-      allNewsData
+      allNewsData,
+      years: Object.keys(allNewsData).sort((a, b) => {
+        if (a < b) {
+          return 1
+        } else {
+          return -1
+        }
+      })
     }
   }
 }

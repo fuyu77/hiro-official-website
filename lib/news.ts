@@ -1,6 +1,6 @@
 import matter from 'gray-matter'
 import { fetchMicroCMS } from './micro-cms'
-import { News } from '../additional'
+import { NewsByYear } from '../additional'
 
 interface NewsResponse {
   contents: Array<{
@@ -15,7 +15,7 @@ interface FrontMatter {
   url: string
 }
 
-export const getSortedNewsData = async (): Promise<News[]> => {
+export const getSortedNewsData = async (): Promise<NewsByYear> => {
   const data: NewsResponse = await fetchMicroCMS('news')
   const allNewsData = data.contents.map((content) => {
     const matterResult = matter(content.markdown)
@@ -24,11 +24,18 @@ export const getSortedNewsData = async (): Promise<News[]> => {
       ...(matterResult.data as FrontMatter)
     }
   })
-  return allNewsData.sort((a, b) => {
+  allNewsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1
     } else {
       return -1
     }
   })
+  return allNewsData.reduce<NewsByYear>((result, post) => {
+    const year = post.date.slice(0, 4)
+    return {
+      ...result,
+      [year]: result[year] !== undefined ? [...result[year], post] : [post]
+    }
+  }, {})
 }
