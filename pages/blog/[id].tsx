@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Layout, { siteTitle } from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/blog'
 import Head from 'next/head'
@@ -21,10 +21,37 @@ const components = {
 
 const Post: React.FC<PostProps> = ({ postData }) => {
   const [verified, setVerified] = useState<boolean>(false)
+  const [speaking, setSpeaking] = useState<boolean>(false)
+  const [speechStarted, setSpeechStarted] = useState<boolean>(false)
+  const [speechButtonText, setSpeechButtonText] = useState<string>('音読する')
+  const content = useRef<HTMLDivElement>(null)
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const changePassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (event.target.value === process.env.NEXT_PUBLIC_BLOG_PASSWORD) {
       setVerified(true)
+    }
+  }
+
+  const speak = (): React.MouseEventHandler<HTMLButtonElement> | undefined => {
+    if (!speechStarted) {
+      const text = content.current?.textContent
+      if (text == null) {
+        return
+      }
+
+      const utterance = new SpeechSynthesisUtterance(text)
+      speechSynthesis.speak(utterance)
+      setSpeaking(true)
+      setSpeechStarted(true)
+      setSpeechButtonText('停止する')
+    } else if (speaking) {
+      speechSynthesis.pause()
+      setSpeaking(false)
+      setSpeechButtonText('再開する')
+    } else {
+      speechSynthesis.resume()
+      setSpeaking(true)
+      setSpeechButtonText('停止する')
     }
   }
 
@@ -41,7 +68,13 @@ const Post: React.FC<PostProps> = ({ postData }) => {
               <Date dateString={postData.date} />
               <h1>{postData.title}</h1>
               <div>
-                <MDXRemote {...postData.mdxSource} components={components} />
+                <button className='button' onClick={speak}>
+                  {speechButtonText}
+                </button>
+                <div ref={content}>
+                  <div />
+                  <MDXRemote {...postData.mdxSource} components={components} />
+                </div>
               </div>
             </div>
           ) : (
@@ -52,7 +85,7 @@ const Post: React.FC<PostProps> = ({ postData }) => {
                   className='input'
                   type='text'
                   placeholder='入力してください'
-                  onChange={onChange}
+                  onChange={changePassword}
                 />
               </div>
             </div>
