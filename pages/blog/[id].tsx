@@ -24,7 +24,7 @@ const Post: React.FC<PostProps> = ({ postData }) => {
   const [speaking, setSpeaking] = useState<boolean>(false)
   const [speechStarted, setSpeechStarted] = useState<boolean>(false)
   const [speechButtonText, setSpeechButtonText] = useState<string>('音読する')
-  const content = useRef<HTMLDivElement>(null)
+  const body = useRef<HTMLDivElement>(null)
 
   const changePassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (event.target.value === process.env.NEXT_PUBLIC_BLOG_PASSWORD) {
@@ -34,7 +34,7 @@ const Post: React.FC<PostProps> = ({ postData }) => {
 
   const speak = (): React.MouseEventHandler<HTMLButtonElement> | undefined => {
     if (!speechStarted) {
-      const text = content.current?.textContent
+      const text = body.current?.textContent
       if (text == null) {
         return
       }
@@ -71,7 +71,7 @@ const Post: React.FC<PostProps> = ({ postData }) => {
                 <button className='button' onClick={speak}>
                   {speechButtonText}
                 </button>
-                <div ref={content}>
+                <div ref={body}>
                   <div />
                   <MDXRemote {...postData.mdxSource} components={components} />
                 </div>
