@@ -69,7 +69,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: postIds.map((id) => {
       return {
         params: {
-          id: id
+          id
         }
       }
     }),
