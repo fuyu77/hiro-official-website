@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Layout, { siteTitle } from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/blog'
 import Head from 'next/head'
@@ -21,10 +21,16 @@ const components = {
 
 const Post: React.FC<PostProps> = ({ postData }) => {
   const [verified, setVerified] = useState<boolean>(false)
-  const [speaking, setSpeaking] = useState<boolean>(false)
-  const [speechStarted, setSpeechStarted] = useState<boolean>(false)
   const [speechButtonText, setSpeechButtonText] = useState<string>('音読する')
   const body = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    return () => {
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel()
+      }
+    }
+  }, [])
 
   const changePassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (event.target.value === process.env.NEXT_PUBLIC_BLOG_PASSWORD) {
@@ -33,25 +39,21 @@ const Post: React.FC<PostProps> = ({ postData }) => {
   }
 
   const speak = (): React.MouseEventHandler<HTMLButtonElement> | undefined => {
-    if (!speechStarted) {
-      const text = body.current?.textContent
-      if (text == null) {
-        return
-      }
+    const text = body.current?.textContent
+    if (text == null) {
+      return
+    }
 
+    if (!speechSynthesis.speaking) {
       const utterance = new SpeechSynthesisUtterance(text)
       speechSynthesis.speak(utterance)
-      setSpeaking(true)
-      setSpeechStarted(true)
       setSpeechButtonText('停止する')
-    } else if (speaking) {
-      speechSynthesis.pause()
-      setSpeaking(false)
-      setSpeechButtonText('再開する')
-    } else {
+    } else if (speechSynthesis.paused) {
       speechSynthesis.resume()
-      setSpeaking(true)
       setSpeechButtonText('停止する')
+    } else {
+      speechSynthesis.pause()
+      setSpeechButtonText('再開する')
     }
   }
 
