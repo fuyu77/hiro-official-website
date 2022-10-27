@@ -30,8 +30,8 @@ const Layout: React.FC<Props> = ({ children, activeTab }) => {
           <div className='container'>
             <div className='navbar-brand'>
               <div className='navbar-item is-size-6'>
-                <Link href='/'>
-                  <a className='has-text-dark'>Hiro & Tohma&apos;s Official Website</a>
+                <Link href='/' className='has-text-dark'>
+                  Hiro & Tohma&apos;s Official Website
                 </Link>
               </div>
             </div>
@@ -45,24 +45,16 @@ const Layout: React.FC<Props> = ({ children, activeTab }) => {
             <div className='container'>
               <ul>
                 <li className={activeTab === 'Profile' ? 'is-active' : ''}>
-                  <Link href='/profile'>
-                    <a>Profile</a>
-                  </Link>
+                  <Link href='/profile'>Profile</Link>
                 </li>
                 <li className={activeTab === 'News' ? 'is-active' : ''}>
-                  <Link href='/news'>
-                    <a>News</a>
-                  </Link>
+                  <Link href='/news'>News</Link>
                 </li>
                 <li className={activeTab === 'Blog' ? 'is-active' : ''}>
-                  <Link href='/blog'>
-                    <a>Blog</a>
-                  </Link>
+                  <Link href='/blog'>Blog</Link>
                 </li>
                 <li className={activeTab === 'Contact' ? 'is-active' : ''}>
-                  <Link href='/contact'>
-                    <a>Contact</a>
-                  </Link>
+                  <Link href='/contact'>Contact</Link>
                 </li>
               </ul>
             </div>

@@ -40,8 +40,11 @@ const Blog: React.FC<BlogProps> = ({ allPostsData, years }) => {
                   <Date dateString={date} />
                 </small>
                 <br />
-                <Link href={`/blog/${id}`}>
-                  <a className='has-text-weight-semibold is-size-5 has-text-dark'>{title}</a>
+                <Link
+                  href={`/blog/${id}`}
+                  className='has-text-weight-semibold is-size-5 has-text-dark'
+                >
+                  {title}
                 </Link>
               </li>
             ))}
