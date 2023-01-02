@@ -11,14 +11,12 @@ import { IndexProps, Tanka } from '../additional'
 const Home: React.FC<IndexProps> = ({ tankasData }) => {
   const tankaInput = useRef<HTMLDivElement>(null)
   const [tankas, setTankas] = useState<Tanka[]>([])
-  const [tanka, setTanka] = useState<string>('')
-  const [source, setSource] = useState<string>('')
+  const [tanka, setTanka] = useState<Tanka>({ title: '', source: '' })
 
   useEffect(() => {
     const shuffledTankas = shuffle(tankasData)
     setTankas(shuffledTankas)
-    setTanka(shuffledTankas[0].title)
-    setSource(shuffledTankas[0].source)
+    setTanka(shuffledTankas[0])
   }, [tankasData])
 
   useEffect(() => {
@@ -27,8 +25,7 @@ const Home: React.FC<IndexProps> = ({ tankasData }) => {
       for (const tanka of tankas.slice(1)) {
         await new Promise((resolve) => setTimeout(resolve, 1000))
         await fadeOut(tankaInput.current, 2000)
-        setTanka(tanka.title)
-        setSource(tanka.source)
+        setTanka(tanka)
         await fadeIn(tankaInput.current, 2000)
         await new Promise((resolve) => setTimeout(resolve, 1000))
       }
@@ -41,8 +38,8 @@ const Home: React.FC<IndexProps> = ({ tankasData }) => {
         <title>{siteTitle}</title>
       </Head>
       <div className={`${styles.tankaWrapper} is-size-6`} ref={tankaInput}>
-        <div className={styles.tankaItem}>{tanka}</div>
-        <div className={styles.tankaItem}>{source}</div>
+        <div className={styles.tankaItem}>{tanka.title}</div>
+        <div className={styles.tankaItem}>{tanka.source}</div>
       </div>
     </Layout>
   )

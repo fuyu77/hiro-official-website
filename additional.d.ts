@@ -16,9 +16,7 @@ interface News {
   url: string
 }
 
-interface NewsByYear {
-  [year: string]: News[]
-}
+type NewsByYear = Record<string, News[]>
 
 interface NewsProps {
   allNewsData: NewsByYear
@@ -39,9 +37,7 @@ interface Blog {
   title: string
 }
 
-interface BlogByYear {
-  [year: string]: Blog[]
-}
+type BlogByYear = Record<string, Blog[]>
 
 interface BlogProps {
   allPostsData: BlogByYear
