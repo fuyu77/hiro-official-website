@@ -24,7 +24,9 @@ const News: React.FC<NewsProps> = ({ allNewsData, years }) => {
                   <div
                     className={`pagination-link ${currentYear === year ? 'is-current' : ''}`}
                     key={year}
-                    onClick={() => setCurrentYear(year)}
+                    onClick={() => {
+                      setCurrentYear(year)
+                    }}
                   >
                     {year}
                   </div>

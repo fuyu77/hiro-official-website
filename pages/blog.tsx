@@ -25,7 +25,9 @@ const Blog: React.FC<BlogProps> = ({ allPostsData, years }) => {
                   <div
                     className={`pagination-link ${currentYear === year ? 'is-current' : ''}`}
                     key={year}
-                    onClick={() => setCurrentYear(year)}
+                    onClick={() => {
+                      setCurrentYear(year)
+                    }}
                   >
                     {year}
                   </div>

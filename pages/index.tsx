@@ -29,7 +29,9 @@ const Home: React.FC<IndexProps> = ({ tankasData }) => {
         await fadeIn(tankaInput.current, 2000)
         await new Promise((resolve) => setTimeout(resolve, 1000))
       }
-    })().catch((e) => console.log(e.message))
+    })().catch((e) => {
+      console.log(e.message)
+    })
   }, [tankas])
 
   return (
