@@ -1,6 +1,6 @@
 import { fetchMicroCMS } from './micro-cms'
 import { serialize } from 'next-mdx-remote/serialize'
-import { ProfileProps } from '../additional'
+import type { ProfileProps } from '../additional'
 
 interface ContactResponse {
   markdown: string

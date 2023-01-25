@@ -4,8 +4,8 @@ import Link from 'next/link'
 import Date from '../components/date'
 import Layout, { siteTitle } from '../components/layout'
 import { getSortedPostsData } from '../lib/blog'
-import { GetStaticProps } from 'next'
-import { BlogProps } from '../additional'
+import type { GetStaticProps } from 'next'
+import type { BlogProps } from '../additional'
 
 const Blog: React.FC<BlogProps> = ({ allPostsData, years }) => {
   const [currentYear, setCurrentYear] = useState<string>(years[0])

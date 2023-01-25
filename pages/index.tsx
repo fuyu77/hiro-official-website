@@ -3,10 +3,10 @@ import { useState, useEffect, useRef } from 'react'
 import Layout, { siteTitle } from '../components/layout'
 import styles from './index.module.scss'
 import { getTankasData } from '../lib/tanka'
-import { GetStaticProps } from 'next'
+import type { GetStaticProps } from 'next'
 import { fadeIn, fadeOut } from '../lib/animation'
 import { shuffle } from '../lib/util'
-import { IndexProps, Tanka } from '../additional'
+import type { IndexProps, Tanka } from '../additional'
 
 const Home: React.FC<IndexProps> = ({ tankasData }) => {
   const tankaInput = useRef<HTMLDivElement>(null)

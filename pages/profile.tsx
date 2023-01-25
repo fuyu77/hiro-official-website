@@ -1,12 +1,12 @@
 import Layout, { siteTitle } from '../components/layout'
 import { getProfileData } from '../lib/profile'
 import Head from 'next/head'
-import { GetStaticProps } from 'next'
+import type { GetStaticProps } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
 import InlineWrapper from '../components/inline-wrapper'
 import InlineItem from '../components/inline-item'
-import { ProfileProps } from '../additional'
+import type { ProfileProps } from '../additional'
 
 const components = { Image, InlineWrapper, InlineItem }
 

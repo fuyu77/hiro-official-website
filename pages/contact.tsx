@@ -1,9 +1,9 @@
 import Layout, { siteTitle } from '../components/layout'
 import { getContactData } from '../lib/contact'
 import Head from 'next/head'
-import { GetStaticProps } from 'next'
+import type { GetStaticProps } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
-import { ContactProps } from '../additional'
+import type { ContactProps } from '../additional'
 
 const components = {}
 

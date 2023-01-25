@@ -1,6 +1,6 @@
 import matter from 'gray-matter'
 import { fetchMicroCMS } from './micro-cms'
-import { Tanka } from '../additional'
+import type { Tanka } from '../additional'
 
 interface TankasResponse {
   contents: Array<{

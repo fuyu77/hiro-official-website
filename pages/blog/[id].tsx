@@ -3,14 +3,14 @@ import Layout, { siteTitle } from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/blog'
 import Head from 'next/head'
 import Date from '../../components/date'
-import { GetStaticProps, GetStaticPaths } from 'next'
-import { ParsedUrlQuery } from 'querystring'
+import type { GetStaticProps, GetStaticPaths } from 'next'
+import type { ParsedUrlQuery } from 'querystring'
 import { MDXRemote } from 'next-mdx-remote'
 import Pdf from '../../components/pdf'
 import Image from 'next/image'
 import InlineWrapper from '../../components/inline-wrapper'
 import InlineItem from '../../components/inline-item'
-import { PostProps } from '../../additional'
+import type { PostProps } from '../../additional'
 
 const components = {
   Image,

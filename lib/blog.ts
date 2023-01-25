@@ -1,5 +1,5 @@
 import matter from 'gray-matter'
-import { Post, Blog, BlogByYear } from '../additional'
+import type { Post, Blog, BlogByYear } from '../additional'
 import { fetchMicroCMS } from './micro-cms'
 import { serialize } from 'next-mdx-remote/serialize'
 

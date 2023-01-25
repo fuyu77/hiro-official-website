@@ -3,8 +3,8 @@ import { useState } from 'react'
 import Date from '../components/date'
 import Layout, { siteTitle } from '../components/layout'
 import { getSortedNewsData } from '../lib/news'
-import { GetStaticProps } from 'next'
-import { NewsProps } from '../additional'
+import type { GetStaticProps } from 'next'
+import type { NewsProps } from '../additional'
 
 const News: React.FC<NewsProps> = ({ allNewsData, years }) => {
   const [currentYear, setCurrentYear] = useState<string>(years[0])

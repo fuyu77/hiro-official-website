@@ -1,6 +1,6 @@
 import matter from 'gray-matter'
 import { fetchMicroCMS } from './micro-cms'
-import { NewsByYear } from '../additional'
+import type { NewsByYear } from '../additional'
 
 interface NewsResponse {
   contents: Array<{
