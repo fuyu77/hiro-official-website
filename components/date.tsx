@@ -1,8 +1,10 @@
-import { parseISO, format } from 'date-fns'
+import { parseISO, format } from 'date-fns';
 
-const Date: React.FC<{ dateString: string }> = ({ dateString }) => {
-  const date = parseISO(dateString)
-  return <time dateTime={dateString}>{format(date, 'yyyy.MM.dd')}</time>
+interface Props {
+  dateString: string;
 }
 
-export default Date
+export function Date({ dateString }: Props) {
+  const date = parseISO(dateString);
+  return <time dateTime={dateString}>{format(date, 'yyyy.MM.dd')}</time>;
+}

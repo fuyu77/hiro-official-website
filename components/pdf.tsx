@@ -6,7 +6,7 @@ interface Props {
   url: string
 }
 
-const Pdf = ({ url }: Props): React.ReactElement => {
+function Pdf({ url }: Props): React.ReactElement {
   return (
     <Worker workerUrl={`/${pdfWorker as string}`}>
       <Viewer fileUrl={url} defaultScale={1} />

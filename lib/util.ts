@@ -5,5 +5,6 @@ export const shuffle = <T>(array: T[]): T[] => {
     array[i] = array[rand]
     array[rand] = tmp
   }
+
   return array
 }
