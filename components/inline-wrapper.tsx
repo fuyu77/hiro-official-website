@@ -4,7 +4,7 @@ interface Props {
   children: React.ReactNode
 }
 
-const InlineWrapper = ({ children }: Props): React.ReactElement => {
+function InlineWrapper({ children }: Props): React.ReactElement {
   return <div className={styles.wrapper}>{children}</div>
 }
 

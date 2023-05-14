@@ -1,76 +1,76 @@
-import { useState, useRef, useEffect } from 'react'
-import Layout, { siteTitle } from '../../components/layout'
-import { getAllPostIds, getPostData } from '../../lib/blog'
-import Head from 'next/head'
-import Date from '../../components/date'
-import type { GetStaticProps, GetStaticPaths } from 'next'
-import type { ParsedUrlQuery } from 'querystring'
-import { MDXRemote } from 'next-mdx-remote'
-import Pdf from '../../components/pdf'
-import Image from 'next/image'
-import InlineWrapper from '../../components/inline-wrapper'
-import InlineItem from '../../components/inline-item'
-import type { PostProps } from '../../additional'
+import { useState, useRef, useEffect } from 'react';
+import Layout, { siteTitle } from '../../components/layout';
+import { getAllPostIds, getPostData } from '../../lib/blog';
+import Head from 'next/head';
+import { Date } from '../../components/date';
+import type { GetStaticProps, GetStaticPaths } from 'next';
+import { MDXRemote } from 'next-mdx-remote';
+import Pdf from '../../components/pdf';
+import Image from 'next/image';
+import InlineWrapper from '../../components/inline-wrapper';
+import InlineItem from '../../components/inline-item';
+import type { PostProps } from '../../additional';
 
 const components = {
   Image,
   Pdf,
   InlineWrapper,
-  InlineItem
-}
+  InlineItem,
+};
 
-const Post: React.FC<PostProps> = ({ postData }) => {
-  const [verified, setVerified] = useState<boolean>(false)
-  const [speechButtonText, setSpeechButtonText] = useState<string>('音読する')
-  const body = useRef<HTMLDivElement>(null)
+export default function Post({ postData }: PostProps) {
+  const [verified, setVerified] = useState<boolean>(false);
+  const [speechButtonText, setSpeechButtonText] = useState<string>('音読する');
+  const body = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       if (speechSynthesis.speaking) {
-        speechSynthesis.cancel()
+        speechSynthesis.cancel();
       }
-    }
-  }, [])
+    },
+    []
+  );
 
   const changePassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (event.target.value === process.env.NEXT_PUBLIC_BLOG_PASSWORD) {
-      setVerified(true)
+      setVerified(true);
     }
-  }
+  };
 
   const speak = (): React.MouseEventHandler<HTMLButtonElement> | undefined => {
-    const text = body.current?.textContent
-    if (text == null) {
-      return
+    const text = body.current?.textContent;
+    if (!text) {
+      return;
     }
 
     if (!speechSynthesis.speaking) {
-      const utterance = new SpeechSynthesisUtterance(text)
-      speechSynthesis.speak(utterance)
-      setSpeechButtonText('停止する')
+      const utterance = new SpeechSynthesisUtterance(text);
+      speechSynthesis.speak(utterance);
+      setSpeechButtonText('停止する');
     } else if (speechSynthesis.paused) {
-      speechSynthesis.resume()
-      setSpeechButtonText('停止する')
+      speechSynthesis.resume();
+      setSpeechButtonText('停止する');
     } else {
-      speechSynthesis.pause()
-      setSpeechButtonText('再開する')
+      speechSynthesis.pause();
+      setSpeechButtonText('再開する');
     }
-  }
+  };
 
   return (
-    <Layout activeTab=''>
+    <Layout activeTab="">
       <Head>
         <title>{`${postData.title} - ${siteTitle}`}</title>
-        <meta name='og:title' content={`${postData.title} - ${siteTitle}`} />
+        <meta name="og:title" content={`${postData.title} - ${siteTitle}`} />
       </Head>
-      <div className='hero-body container is-max-desktop'>
-        <article className='content'>
+      <div className="hero-body container is-max-desktop">
+        <article className="content">
           {!postData.private || verified ? (
             <div>
               <Date dateString={postData.date} />
               <h1>{postData.title}</h1>
               <div>
-                <button className='button' onClick={speak}>
+                <button type="button" className="button" onClick={speak}>
                   {speechButtonText}
                 </button>
                 <div ref={body}>
@@ -81,12 +81,12 @@ const Post: React.FC<PostProps> = ({ postData }) => {
             </div>
           ) : (
             <div>
-              <label className='label'>パスワード</label>
-              <div className='control'>
+              <label className="label">パスワード</label>
+              <div className="control">
                 <input
-                  className='input'
-                  type='text'
-                  placeholder='入力してください'
+                  className="input"
+                  type="text"
+                  placeholder="入力してください"
                   onChange={changePassword}
                 />
               </div>
@@ -95,35 +95,31 @@ const Post: React.FC<PostProps> = ({ postData }) => {
         </article>
       </div>
     </Layout>
-  )
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const postIds = await getAllPostIds()
+  const postIds = await getAllPostIds();
   return {
-    paths: postIds.map((id) => {
-      return {
-        params: {
-          id
-        }
-      }
-    }),
-    fallback: false
-  }
-}
+    paths: postIds.map((id) => ({
+      params: {
+        id,
+      },
+    })),
+    fallback: false,
+  };
+};
 
 export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
-  const postData = await getPostData((params as ParsedUrlQuery).id as string)
+  const postData = await getPostData(params!.id as string);
   return {
     props: {
       postData: {
         title: postData.title,
         date: postData.date,
         private: postData.private,
-        mdxSource: postData.mdxSource
-      }
-    }
-  }
-}
-
-export default Post
+        mdxSource: postData.mdxSource,
+      },
+    },
+  };
+};
