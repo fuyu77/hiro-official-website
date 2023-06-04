@@ -7,6 +7,7 @@ interface PostResponse {
   id: string;
   markdown: string;
 }
+
 interface PostsResponse {
   contents: PostResponse[];
 }
