@@ -5,15 +5,11 @@ import Head from 'next/head';
 import { Date } from '../../components/date';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
+import Image from '../../components/image';
 import Pdf from '../../components/pdf';
-import NextImage, { type ImageProps } from 'next/image';
 import InlineWrapper from '../../components/inline-wrapper';
 import InlineItem from '../../components/inline-item';
 import type { PostProps } from '../../additional';
-
-function Image(props: ImageProps) {
-  return <NextImage {...props} />;
-}
 
 const components = {
   Image,

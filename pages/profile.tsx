@@ -3,7 +3,7 @@ import { getProfileData } from '../lib/profile';
 import Head from 'next/head';
 import type { GetStaticProps } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import Image from 'next/image';
+import Image from '../components/image';
 import InlineWrapper from '../components/inline-wrapper';
 import InlineItem from '../components/inline-item';
 import type { ProfileProps } from '../additional';
