@@ -52,6 +52,10 @@ footer {
     margin-bottom: 2rem;
   }
 
+  p:not(:first-child) {
+    margin-top: 1.1428em;
+  }
+
   h1 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
