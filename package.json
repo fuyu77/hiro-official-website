@@ -13,26 +13,26 @@
     "bulma": "^0.9.4",
     "date-fns": "^2.30.0",
     "gray-matter": "^4.0.3",
-    "next": "^13.4.18",
+    "next": "^13.4.19",
     "next-mdx-remote": "^4.4.1",
-    "pdfjs-dist": "^2.16.105",
+    "pdfjs-dist": "^3.9.179",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.66.0"
+    "sass": "^1.66.1"
   },
   "devDependencies": {
-    "@types/node": "^18.17.5",
+    "@types/node": "^18.17.6",
     "@types/react": "^18.2.20",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "eslint": "^8.47.0",
-    "eslint-config-next": "^13.4.18",
+    "eslint-config-next": "^13.4.19",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-xo-react": "^0.27.0",
     "eslint-config-xo-space": "^0.34.0",
-    "eslint-config-xo-typescript": "^1.0.0",
+    "eslint-config-xo-typescript": "^1.0.1",
     "file-loader": "^6.2.0",
     "prettier": "^3.0.2",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.6"
   }
 }
