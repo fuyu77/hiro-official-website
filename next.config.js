@@ -8,11 +8,11 @@ module.exports = {
           options: {
             name: '[contenthash].[ext]',
             publicPath: '_next/static/worker',
-            outputPath: 'static/worker'
-          }
-        }
-      ]
-    })
-    return config
-  }
-}
+            outputPath: 'static/worker',
+          },
+        },
+      ],
+    });
+    return config;
+  },
+};
