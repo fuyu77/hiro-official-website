@@ -13,12 +13,12 @@
     "bulma": "^0.9.4",
     "date-fns": "^2.30.0",
     "gray-matter": "^4.0.3",
-    "next": "^13.4.17",
+    "next": "^13.4.18",
     "next-mdx-remote": "^4.4.1",
     "pdfjs-dist": "^2.16.105",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.65.1"
+    "sass": "^1.66.0"
   },
   "devDependencies": {
     "@types/node": "^18.17.5",
