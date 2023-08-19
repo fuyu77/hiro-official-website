@@ -1,7 +1,7 @@
 import { parseISO, format } from 'date-fns';
 
 interface Props {
-  dateString: string;
+  readonly dateString: string;
 }
 
 export function Date({ dateString }: Props) {

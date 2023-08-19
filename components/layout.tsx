@@ -2,8 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 interface Props {
-  children: React.ReactNode;
-  activeTab: string;
+  readonly children: React.ReactNode;
+  readonly activeTab: string;
 }
 
 export const siteTitle = '榊原紘／遠馬｜Official Website';

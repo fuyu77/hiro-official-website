@@ -1,12 +1,12 @@
-import styles from './inline-item.module.scss'
+import styles from './inline-item.module.scss';
 
 interface Props {
-  itemWidth?: string
-  children: React.ReactNode
+  readonly itemWidth?: string;
+  readonly children: React.ReactNode;
 }
 
 function InlineItem({ itemWidth, children }: Props): React.ReactElement {
-  return <div className={itemWidth === 'full' ? styles.full : styles.half}>{children}</div>
+  return <div className={itemWidth === 'full' ? styles.full : styles.half}>{children}</div>;
 }
 
-export default InlineItem
+export default InlineItem;

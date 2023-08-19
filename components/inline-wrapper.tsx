@@ -1,11 +1,11 @@
-import styles from './inline-wrapper.module.scss'
+import styles from './inline-wrapper.module.scss';
 
 interface Props {
-  children: React.ReactNode
+  readonly children: React.ReactNode;
 }
 
 function InlineWrapper({ children }: Props): React.ReactElement {
-  return <div className={styles.wrapper}>{children}</div>
+  return <div className={styles.wrapper}>{children}</div>;
 }
 
-export default InlineWrapper
+export default InlineWrapper;
