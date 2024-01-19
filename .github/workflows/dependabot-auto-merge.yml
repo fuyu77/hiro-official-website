@@ -10,20 +10,12 @@ permissions:
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' }}
+    if: ${{ github.actor == 'dependabot[bot]' }} # DependabotのPRの場合にのみ動作する
+    env:
+      PR_URL: ${{github.event.pull_request.html_url}}
+      GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     steps:
-      - name: Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v1
-        with:
-          github-token: '${{ secrets.GITHUB_TOKEN }}'
-      - name: Approve a PR
+      - name: PRをApproveする
         run: gh pr review --approve "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Enable auto-merge for Dependabot PRs
+      - name: 自動マージフラグをオンにする
         run: gh pr merge --auto --merge "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
