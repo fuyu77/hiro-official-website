@@ -32,6 +32,6 @@
     "eslint-config-xo-typescript": "^3.0.0",
     "file-loader": "^6.2.0",
     "prettier": "^3.2.5",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   }
 }
