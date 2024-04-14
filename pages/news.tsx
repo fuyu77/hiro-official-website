@@ -15,7 +15,7 @@ export default function News({ allNewsData, years }: NewsProps) {
         <title>{`News - ${siteTitle}`}</title>
         <meta name="og:title" content={`News - ${siteTitle}`} />
       </Head>
-      <div className="hero-body container">
+      <div className="hero-body container is-block">
         <section>
           <nav className="pagination" role="navigation">
             <ul className="pagination-list">

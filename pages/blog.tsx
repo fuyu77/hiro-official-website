@@ -16,7 +16,7 @@ export default function Blog({ allPostsData, years }: BlogProps) {
         <title>{`Blog - ${siteTitle}`}</title>
         <meta name="og:title" content={`Blog - ${siteTitle}`} />
       </Head>
-      <div className="hero-body container">
+      <div className="hero-body container is-block">
         <section>
           <nav className="pagination" role="navigation">
             <ul className="pagination-list">
