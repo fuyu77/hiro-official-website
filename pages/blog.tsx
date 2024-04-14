@@ -18,7 +18,7 @@ export default function Blog({ allPostsData, years }: BlogProps) {
       </Head>
       <div className="hero-body container is-block">
         <section>
-          <nav className="pagination" role="navigation">
+          <nav className="pagination mb-2" role="navigation">
             <ul className="pagination-list">
               {years.map((year) => (
                 <div
