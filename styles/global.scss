@@ -1,8 +1,20 @@
 @charset "utf-8";
-@import '../node_modules/bulma/bulma.sass';
+@import '../node_modules/bulma/sass';
+
+:root {
+  --accent-color: palegreen;
+  --header-color: green;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent-color: seagreen;
+    --header-color: seagreen;
+  }
+}
 
 footer {
-  background-color: white;
+  background-color: var(--bulma-scheme-main);
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -17,25 +29,25 @@ footer {
 }
 
 .has-text-dark {
-  color: #4a4a4a !important;
+  color: var(--bulma-body-color) !important;
 }
 
 .pagination-link.is-current {
-  background-color: palegreen;
+  background-color: var(--accent-color);
   border-color: hsl(0deg, 0%, 86%);
-  color: #4a4a4a;
+  color: var(--bulma-body-color);
 }
 
 .tabs.is-boxed a:hover {
-  background-color: palegreen;
+  background-color: var(--accent-color);
 }
 
 .tabs.is-boxed li.is-active a {
-  background-color: palegreen;
+  background-color: var(--accent-color);
 }
 
 .tabs li.is-active a {
-  color: #4a4a4a;
+  color: var(--bulma-body-color);
 }
 
 .content {
@@ -68,8 +80,8 @@ footer {
   h2 {
     font-size: 1.25rem;
     padding: 0.5rem;
-    border-left: solid 5px green;
-    border-bottom: solid 1px green;
+    border-left: solid 5px var(--header-color);
+    border-bottom: solid 1px var(--header-color);
     margin-bottom: 1.5rem;
   }
 
