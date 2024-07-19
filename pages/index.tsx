@@ -37,8 +37,8 @@ export default function Home({ tankasData }: IndexProps) {
           setTimeout(resolve, 1000);
         });
       }
-    })().catch((e) => {
-      console.log(e.message);
+    })().catch(() => {
+      // Nothing to do.
     });
   }, [tankas]);
 
