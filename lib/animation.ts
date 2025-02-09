@@ -3,7 +3,6 @@ export const fadeIn = async (element: HTMLDivElement, duration: number): Promise
   const start = performance.now();
   while (opacity < 1) {
     element.style.opacity = opacity.toString();
-    // eslint-disable-next-line no-await-in-loop
     const timeStamp = await new Promise<number>((resolve) => {
       requestAnimationFrame(resolve);
     });
@@ -18,7 +17,6 @@ export const fadeOut = async (element: HTMLDivElement, duration: number): Promis
   const start = performance.now();
   while (opacity > 0) {
     element.style.opacity = opacity.toString();
-    // eslint-disable-next-line no-await-in-loop
     const timeStamp = await new Promise<number>((resolve) => {
       requestAnimationFrame(resolve);
     });

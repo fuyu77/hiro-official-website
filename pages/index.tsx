@@ -23,16 +23,12 @@ export default function Home({ tankasData }: IndexProps) {
     (async () => {
       if (tankaInput.current === null || tankas.length === 0) return;
       for (const tanka of tankas.slice(1)) {
-        // eslint-disable-next-line no-await-in-loop
         await new Promise((resolve) => {
           setTimeout(resolve, 1000);
         });
-        // eslint-disable-next-line no-await-in-loop
         await fadeOut(tankaInput.current, 2000);
         setTanka(tanka);
-        // eslint-disable-next-line no-await-in-loop
         await fadeIn(tankaInput.current, 2000);
-        // eslint-disable-next-line no-await-in-loop
         await new Promise((resolve) => {
           setTimeout(resolve, 1000);
         });
