@@ -9,10 +9,3 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
-    ignore:
-      - dependency-name: '@types/node'
-        versions: ['22.x']
-      - dependency-name: '@typescript-eslint/eslint-plugin'
-        versions: ['8.x']
-      - dependency-name: '@typescript-eslint/parser'
-        versions: ['8.x']
