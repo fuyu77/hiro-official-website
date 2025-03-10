@@ -20,7 +20,7 @@
     "sass": "^1.85.1"
   },
   "devDependencies": {
-    "@types/node": "^22.13.9",
+    "@types/node": "^22.13.10",
     "@types/react": "^19.0.10",
     "eslint": "^9.22.0",
     "eslint-config-next": "^15.2.1",
