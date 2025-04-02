@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.13.16",
-    "@types/react": "^19.0.12",
+    "@types/react": "^19.1.0",
     "eslint": "^9.23.0",
     "eslint-config-next": "^15.2.4",
     "eslint-config-prettier": "^10.1.1",
