@@ -17,7 +17,7 @@
     "next-mdx-remote": "^5.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.1.0",
-    "sass": "^1.89.0"
+    "sass": "^1.89.1"
   },
   "devDependencies": {
     "@types/node": "^22.15.28",
