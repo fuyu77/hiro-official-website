@@ -1,21 +1,13 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import tseslint from 'typescript-eslint';
-import prettier from 'eslint-config-prettier';
+import { FlatCompat } from '@eslint/eslintrc'
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
-});
+})
 
-export default tseslint.config(
+const eslintConfig = [
   ...compat.config({
-    extends: ['next'],
+    extends: ['next/core-web-vitals', 'next/typescript'],
   }),
-  prettier,
-  {
-    files: ['**/*.ts', '**/*.tsx'],
-  },
-  {
-    files: ['**/*.js', '**/*.jsx', '**/*.mjs'],
-    extends: [tseslint.configs.disableTypeChecked],
-  },
-);
+]
+
+export default eslintConfig
