@@ -22,7 +22,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@types/node": "^22.18.0",
-    "@types/react": "^19.1.10",
+    "@types/react": "^19.1.11",
     "eslint": "^9.34.0",
     "eslint-config-next": "^15.5.0",
     "file-loader": "^6.2.0",
