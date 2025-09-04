@@ -17,7 +17,7 @@
     "next-mdx-remote": "^5.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.1.1",
-    "sass": "^1.91.0"
+    "sass": "^1.92.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
