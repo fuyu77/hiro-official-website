@@ -1,16 +1,24 @@
-import { Viewer, Worker } from '@react-pdf-viewer/core';
-import '@react-pdf-viewer/core/lib/styles/index.css';
-import pdfWorker from '../pdf-worker';
-
 interface Props {
   readonly url: string;
 }
 
 function Pdf({ url }: Props): React.ReactElement {
   return (
-    <Worker workerUrl={`/${pdfWorker as string}`}>
-      <Viewer fileUrl={url} defaultScale={1} />
-    </Worker>
+    <div>
+      <iframe
+        src={url}
+        title="PDF document"
+        style={{ width: '100%', minHeight: '60vh', border: 'none' }}
+        loading="lazy"
+      />
+      <p style={{ marginTop: '0.75rem' }}>
+        PDFを表示できない場合は
+        <a href={url} target="_blank" rel="noreferrer noopener" style={{ marginLeft: '0.25rem' }}>
+          こちら
+        </a>
+        をクリックしてください。
+      </p>
+    </div>
   );
 }
 
