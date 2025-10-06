@@ -1,8 +1,8 @@
-import Head from 'next/head';
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 
 interface Props {
-  readonly children: React.ReactNode;
+  readonly children: ReactNode;
   readonly activeTab: string;
 }
 
@@ -11,20 +11,6 @@ export const siteTitle = '榊原紘／遠馬｜Official Website';
 export default function Layout({ children, activeTab }: Props) {
   return (
     <section className="hero is-fullheight">
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="歌人・俳人の榊原紘／遠馬の公式サイトです。掲載情報やブログなど。"
-        />
-        <meta
-          property="og:image"
-          content="https://hiro-tohma-official-website.com/_next/image?url=%2Fimages%2Fogp.png&w=1200&q=75"
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
       <div className="hero-head">
         <header className="navbar">
           <div className="container">
