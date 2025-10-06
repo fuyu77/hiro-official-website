@@ -13,13 +13,13 @@ export const metadata: Metadata = {
 };
 
 export default async function ProfilePage() {
-  const mdxSource = await getProfileData();
+  const markdown = await getProfileData();
 
   return (
     <Layout activeTab="Profile">
       <div className="hero-body container is-max-desktop">
         <article className="content">
-          <MdxContent mdxSource={mdxSource} components={components} />
+          <MdxContent source={markdown} components={components} />
         </article>
       </div>
     </Layout>

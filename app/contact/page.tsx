@@ -8,13 +8,13 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-  const mdxSource = await getContactData();
+  const markdown = await getContactData();
 
   return (
     <Layout activeTab="Contact">
       <div className="hero-body container is-max-desktop">
         <article className="content">
-          <MdxContent mdxSource={mdxSource} />
+          <MdxContent source={markdown} />
         </article>
       </div>
     </Layout>

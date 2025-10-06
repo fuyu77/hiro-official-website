@@ -1,27 +1,17 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import type { Post } from '../additional';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Date } from './date';
-import MdxContent from './mdx-content';
-import Image from './image';
-import Pdf from './pdf';
-import InlineWrapper from './inline-wrapper';
-import InlineItem from './inline-item';
-
-const components = {
-  Image,
-  Pdf,
-  InlineWrapper,
-  InlineItem,
-};
 
 interface Props {
-  readonly postData: Post;
+  readonly title: string;
+  readonly date: string;
+  readonly isPrivate: boolean;
+  readonly children: ReactNode;
 }
 
-export default function BlogPostClient({ postData }: Props) {
-  const [verified, setVerified] = useState<boolean>(!postData.private);
+export default function BlogPostClient({ title, date, isPrivate, children }: Props) {
+  const [verified, setVerified] = useState<boolean>(!isPrivate);
   const [speechButtonText, setSpeechButtonText] = useState<string>('音読する');
   const body = useRef<HTMLDivElement>(null);
 
@@ -64,15 +54,15 @@ export default function BlogPostClient({ postData }: Props) {
       <article className="content">
         {verified ? (
           <div>
-            <Date dateString={postData.date} />
-            <h1>{postData.title}</h1>
+            <Date dateString={date} />
+            <h1>{title}</h1>
             <div>
               <button type="button" className="button" onClick={speak}>
                 {speechButtonText}
               </button>
               <div ref={body}>
                 <div />
-                <MdxContent mdxSource={postData.mdxSource} components={components} />
+                {children}
               </div>
             </div>
           </div>

@@ -2,9 +2,21 @@ import type { Metadata } from 'next';
 import { cache } from 'react';
 import Layout, { siteTitle } from '../../../components/layout';
 import BlogPostClient from '../../../components/blog-post-client';
-import { getAllPostIds, getPostData } from '../../../lib/blog';
+import MdxContent from '../../../components/mdx-content';
+import Image from '../../../components/image';
+import Pdf from '../../../components/pdf';
+import InlineWrapper from '../../../components/inline-wrapper';
+import InlineItem from '../../../components/inline-item';
+import { getAllPostIds, getPostData, type PostDetail } from '../../../lib/blog';
 
-const getPostDataCached = cache(async (id: string) => getPostData(id));
+const getPostDataCached = cache(async (id: string): Promise<PostDetail> => getPostData(id));
+
+const components = {
+  Image,
+  Pdf,
+  InlineWrapper,
+  InlineItem,
+};
 
 export async function generateStaticParams() {
   const postIds = await getAllPostIds();
@@ -42,7 +54,9 @@ export default async function BlogPostPage({
 
   return (
     <Layout activeTab="">
-      <BlogPostClient postData={postData} />
+      <BlogPostClient title={postData.title} date={postData.date} isPrivate={postData.private}>
+        <MdxContent source={postData.markdown} components={components} />
+      </BlogPostClient>
     </Layout>
   );
 }
