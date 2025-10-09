@@ -53,7 +53,7 @@ export default async function BlogPostPage({
   const postData = await getPostDataCached(id);
 
   return (
-    <Layout activeTab="">
+    <Layout activeTab="Blog">
       <BlogPostClient title={postData.title} date={postData.date} isPrivate={postData.private}>
         <MdxContent source={postData.markdown} components={components} />
       </BlogPostClient>
