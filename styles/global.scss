@@ -63,16 +63,11 @@ footer {
   blockquote:not(:last-child),
   pre:not(:last-child),
   table:not(:last-child) {
-    margin-bottom: 2rem;
-  }
-
-  p:not(:first-child) {
-    margin-top: 1.1428em;
+    margin: 0.5rem 0 1.5rem;
   }
 
   h1 {
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
   }
 
   h1:not(:first-child) {
@@ -88,8 +83,6 @@ footer {
 
     line-height: 1.2;
     letter-spacing: 0.02em;
-
-    margin-bottom: 1.5rem;
   }
 
   h2::before {
@@ -118,6 +111,7 @@ footer {
 
   h3 {
     font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
   }
 }
