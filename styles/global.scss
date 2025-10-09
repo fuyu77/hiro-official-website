@@ -4,12 +4,14 @@
 :root {
   --accent-color: palegreen;
   --header-color: green;
+  --rule-alpha: 0.28;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --accent-color: seagreen;
     --header-color: seagreen;
+    --rule-alpha: 0.35;
   }
 }
 
@@ -80,9 +82,31 @@ footer {
   h2 {
     font-size: 1.25rem;
     padding: 0.5rem;
-    border-left: solid 5px var(--header-color);
-    border-bottom: solid 1px var(--header-color);
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+
     margin-bottom: 1.5rem;
+  }
+
+  h2::before {
+    content: '❦';
+    color: var(--header-color);
+    font-size: 1.15em;
+    transform: translateY(-0.02em);
+    font-weight: 400;
+  }
+
+  h2::after {
+    content: '';
+    flex: 1 1 auto;
+    height: 1px;
+    background: currentColor;
+    opacity: var(--rule-alpha);
+    transform: translateY(0.04em);
   }
 
   h3 {
