@@ -63,7 +63,8 @@ footer {
   blockquote:not(:last-child),
   pre:not(:last-child),
   table:not(:last-child) {
-    margin: 0.5rem 0 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
   }
 
   h1 {
