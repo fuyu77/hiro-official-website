@@ -80,7 +80,7 @@ footer {
     padding: 0.5rem;
     display: flex;
     align-items: center;
-    gap: 0.6em;
+    gap: 0.5em;
 
     line-height: 1.2;
     letter-spacing: 0.02em;
@@ -94,18 +94,18 @@ footer {
     font-weight: 400;
   }
 
-  h2::after {
-    content: '';
-    flex: 1 1 auto;
-    height: 1px;
-    background: currentColor;
-    opacity: var(--rule-alpha);
-    transform: translateY(0.04em);
-  }
+  // h2::after {
+  //   content: '';
+  //   flex: 1 1 auto;
+  //   height: 1px;
+  //   background: currentColor;
+  //   opacity: var(--rule-alpha);
+  //   transform: translateY(0.04em);
+  // }
 
   @media (max-width: 640px) {
     h2 {
-      gap: 0.5em;
+      gap: 0.4em;
       letter-spacing: 0.01em;
     }
   }
