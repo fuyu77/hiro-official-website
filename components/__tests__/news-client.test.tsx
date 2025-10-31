@@ -12,8 +12,8 @@ const mockNews = {
   ]
 };
 
-describe('NewsClient', () => {
-  it('renders current year news and switches when another year is selected', () => {
+describe('NewsClient コンポーネント', () => {
+  it('最新のニュースを表示し年を切り替えられる', () => {
     render(<NewsClient allNewsData={mockNews} years={mockYears} />);
 
     expect(screen.getByRole('link', { name: 'Latest News' })).toHaveAttribute(
@@ -32,7 +32,7 @@ describe('NewsClient', () => {
     expect(screen.getByText('2024').className).not.toContain('is-current');
   });
 
-  it('returns null when there are no years', () => {
+  it('年が存在しない場合は null を返す', () => {
     const { container } = render(<NewsClient allNewsData={{}} years={[]} />);
     expect(container.firstChild).toBeNull();
   });

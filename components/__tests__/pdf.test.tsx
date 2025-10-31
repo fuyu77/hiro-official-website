@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import Pdf from '../pdf';
 
-describe('Pdf', () => {
-  it('renders an iframe and a fallback link to the PDF', () => {
+describe('Pdf コンポーネント', () => {
+  it('PDF を表示する iframe とフォールバックリンクを描画する', () => {
     render(<Pdf url="https://example.com/document.pdf" />);
 
     const iframe = screen.getByTitle('PDF document');

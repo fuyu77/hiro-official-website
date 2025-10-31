@@ -14,8 +14,8 @@ vi.mock('../inline-wrapper.module.scss', () => ({
 import InlineItem from '../inline-item';
 import InlineWrapper from '../inline-wrapper';
 
-describe('InlineItem', () => {
-  it('applies the half class by default', () => {
+describe('InlineItem コンポーネント', () => {
+  it('デフォルトで half クラスを適用する', () => {
     render(
       <InlineItem>
         <span>Content</span>
@@ -26,7 +26,7 @@ describe('InlineItem', () => {
     expect(element).toHaveClass('half-class');
   });
 
-  it('applies the full class when specified', () => {
+  it('itemWidth=\"full\" のとき full クラスを適用する', () => {
     render(
       <InlineItem itemWidth="full">
         <span>Full</span>
@@ -38,8 +38,8 @@ describe('InlineItem', () => {
   });
 });
 
-describe('InlineWrapper', () => {
-  it('wraps children with the wrapper class', () => {
+describe('InlineWrapper コンポーネント', () => {
+  it('子要素を wrapper クラスで囲む', () => {
     render(
       <InlineWrapper>
         <div>Wrapped</div>

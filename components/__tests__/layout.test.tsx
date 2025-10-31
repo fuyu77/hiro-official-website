@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import Layout from '../layout';
 
-describe('Layout', () => {
-  it('renders children and highlights active tab', () => {
+describe('Layout コンポーネント', () => {
+  it('子要素を表示しアクティブなタブをハイライトする', () => {
     render(
       <Layout activeTab="Blog">
         <div>Child content</div>

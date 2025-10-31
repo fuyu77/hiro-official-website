@@ -43,8 +43,8 @@ beforeEach(() => {
   } as unknown as new (text: string) => SpeechSynthesisUtterance;
 });
 
-describe('BlogPostClient', () => {
-  it('renders password form when the post is private', () => {
+describe('BlogPostClient コンポーネント', () => {
+  it('非公開記事の場合にパスワード入力フォームを表示する', () => {
     render(
       <BlogPostClient title="Private Post" date="2024-01-01" isPrivate>
         <p>Secret content</p>
@@ -54,7 +54,7 @@ describe('BlogPostClient', () => {
     expect(screen.getByText('パスワード')).toBeInTheDocument();
   });
 
-  it('unlocks the post after entering the correct password', () => {
+  it('正しいパスワード入力で記事を表示する', () => {
     render(
       <BlogPostClient title="Private Post" date="2024-01-01" isPrivate>
         <p>Secret content</p>
@@ -71,7 +71,7 @@ describe('BlogPostClient', () => {
     expect(screen.getByRole('button', { name: '音読する' })).toBeInTheDocument();
   });
 
-  it('speaks the post body when the speak button is clicked', () => {
+  it('音読ボタンで本文の読み上げを開始する', () => {
     render(
       <BlogPostClient title="Public Post" date="2024-01-01" isPrivate={false}>
         <p>Post content</p>

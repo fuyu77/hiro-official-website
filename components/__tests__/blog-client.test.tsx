@@ -11,8 +11,8 @@ const mockPosts = {
   '2023': [{ id: '3', date: '2023-03-04', title: 'Older Post' }]
 };
 
-describe('BlogClient', () => {
-  it('renders posts for the selected year and toggles the active year', () => {
+describe('BlogClient コンポーネント', () => {
+  it('選択した年の記事を表示し、年を切り替えられる', () => {
     render(<BlogClient allPostsData={mockPosts} years={mockYears} />);
 
     expect(screen.getByRole('link', { name: 'First Post' })).toBeInTheDocument();
@@ -26,7 +26,7 @@ describe('BlogClient', () => {
     expect(screen.getByText('2024').className).not.toContain('is-current');
   });
 
-  it('returns null when no year is provided', () => {
+  it('年が指定されない場合は null を返す', () => {
     const { container } = render(<BlogClient allPostsData={{}} years={[]} />);
     expect(container.firstChild).toBeNull();
   });

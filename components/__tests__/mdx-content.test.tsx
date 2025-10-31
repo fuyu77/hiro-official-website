@@ -4,12 +4,12 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import MdxContent from '../mdx-content';
 
-describe('MdxContent', () => {
+describe('MdxContent コンポーネント', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it('renders the MDXRemote component with provided props', () => {
+  it('渡された props で MDXRemote を描画する', () => {
     const source = { compiledSource: '<p>Example</p>' };
     const components = { p: (props: { children: ReactNode }) => <p {...props} /> };
 

@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import Image from '../image';
 
-describe('Image', () => {
-  it('renders an image element with forwarded props', () => {
+describe('Image コンポーネント', () => {
+  it('渡された props を用いて画像を表示する', () => {
     render(<Image src="/photo.jpg" alt="Sample" width={100} height={100} />);
 
     const img = screen.getByRole('img', { name: 'Sample' });

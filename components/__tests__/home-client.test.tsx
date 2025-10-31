@@ -9,8 +9,8 @@ const sampleTankas = [
   }
 ];
 
-describe('HomeClient', () => {
-  it('renders the initial tanka', async () => {
+describe('HomeClient コンポーネント', () => {
+  it('最初の短歌を表示する', async () => {
     render(<HomeClient tankasData={sampleTankas} />);
 
     await waitFor(() => {
