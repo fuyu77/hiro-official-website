@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     title: siteTitle,
     description,
     images: [ogImageUrl],
+    url: 'https://hiro-tohma-official-website.com',
   },
   twitter: {
     card: 'summary_large_image',
