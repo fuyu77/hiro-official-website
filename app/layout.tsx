@@ -17,9 +17,11 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
+    siteName: siteTitle,
     title: siteTitle,
     description,
     images: [ogImageUrl],
+    url: 'https://hiro-tohma-official-website.com',
   },
   twitter: {
     card: 'summary_large_image',
