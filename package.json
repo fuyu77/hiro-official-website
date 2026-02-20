@@ -22,7 +22,7 @@
     "@eslint/eslintrc": "^3.3.3",
     "@types/node": "^25.3.0",
     "@types/react": "^19.2.14",
-    "eslint": "^10.0.0",
+    "eslint": "^10.0.1",
     "eslint-config-next": "^16.1.6",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3"
