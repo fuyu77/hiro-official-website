@@ -1,5 +1,6 @@
 .wrapper {
   display: flex;
-  justify-content: space-around;
   align-items: flex-end;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  width: 100%;
 }

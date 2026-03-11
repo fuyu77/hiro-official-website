@@ -1,9 +1,4 @@
-.full {
-  max-width: 76%;
-  flex: 1;
-}
-
-.half {
-  max-width: 23%;
-  flex: 1;
+.item {
+  flex: 1 1 0;
+  min-width: 0;
 }
