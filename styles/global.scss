@@ -84,14 +84,9 @@ footer {
 
     line-height: 1.2;
     letter-spacing: 0.02em;
-  }
 
-  h2::before {
-    content: '❡';
-    color: var(--header-color);
-    font-size: 1.15em;
-    transform: translateY(-0.02em);
-    font-weight: 400;
+    border-left: solid 5px var(--header-color);
+    border-bottom: solid 1px var(--header-color);
   }
 
   @media (max-width: 640px) {
