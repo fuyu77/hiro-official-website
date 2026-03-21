@@ -1,8 +1,8 @@
-# 榊原紘／遠馬｜ Official Website
+# 榊原紘｜Official Website
 
-[榊原紘／遠馬｜ Official Website](https://hiro-tohma-official-website.com)
+[榊原紘｜Official Website](https://hiro-tohma-official-website.com)
 
-歌人・俳人の榊原紘／遠馬の公式サイトです。掲載情報やブログなど。
+歌人の榊原紘の公式サイトです。掲載情報やブログなど。
 
 ## 技術スタック
 

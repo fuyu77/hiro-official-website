@@ -6,7 +6,7 @@ interface Props {
   readonly activeTab: string;
 }
 
-export const siteTitle = '榊原紘／遠馬｜Official Website';
+export const siteTitle = '榊原紘｜Official Website';
 
 export default function Layout({ children, activeTab }: Props) {
   return (
