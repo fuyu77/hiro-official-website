@@ -17,7 +17,7 @@ export default function Layout({ children, activeTab }: Props) {
             <div className="navbar-brand">
               <div className="navbar-item is-size-6">
                 <Link href="/" className="has-text-dark">
-                  Hiro & Tohma&apos;s Official Website
+                  Hiro&apos;s Official Website
                 </Link>
               </div>
             </div>
