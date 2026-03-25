@@ -76,22 +76,23 @@ footer {
   }
 
   h2 {
-    font-size: 1.25rem;
-    padding: 0.5rem;
+    font-size: 1.32rem;
+    padding: 0.55rem 0 0.5rem 0.9rem;
     display: flex;
     align-items: center;
-    gap: 0.5em;
 
-    line-height: 1.2;
+    line-height: 1.35;
     letter-spacing: 0.02em;
+    font-weight: 500;
 
-    border-left: solid 5px var(--header-color);
-    border-bottom: solid 1px var(--header-color);
+    border-left: solid 4px var(--header-color);
+    border-bottom: solid 1px rgb(from var(--header-color) r g b / 0.45);
   }
 
   @media (max-width: 640px) {
     h2 {
-      gap: 0.4em;
+      font-size: 1.2rem;
+      padding: 0.5rem 0 0.45rem 0.8rem;
       letter-spacing: 0.01em;
     }
   }
