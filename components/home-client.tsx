@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Tanka } from '../additional';
 import { fadeIn, fadeOut } from '../lib/animation';
 import { shuffle } from '../lib/util';
@@ -12,19 +12,24 @@ interface Props {
 
 export default function HomeClient({ tankasData }: Props) {
   const tankaInput = useRef<HTMLDivElement>(null);
-  const tankas = useMemo(() => shuffle([...tankasData]), [tankasData]);
-  const [currentTankaIndex, setCurrentTankaIndex] = useState(0);
-  const tanka = tankas[currentTankaIndex] ?? { title: '', source: '' };
+  const [tankas, setTankas] = useState<Tanka[]>([]);
+  const [tanka, setTanka] = useState<Tanka>({ title: '', source: '' });
+
+  useEffect(() => {
+    const shuffledTankas = shuffle([...tankasData]);
+    setTankas(shuffledTankas);
+    setTanka(shuffledTankas[0] ?? { title: '', source: '' });
+  }, [tankasData]);
 
   useEffect(() => {
     (async () => {
       if (tankaInput.current === null || tankas.length === 0) return;
-      for (const [index] of tankas.slice(1).entries()) {
+      for (const currentTanka of tankas.slice(1)) {
         await new Promise((resolve) => {
           setTimeout(resolve, 1000);
         });
         await fadeOut(tankaInput.current, 2000);
-        setCurrentTankaIndex(index + 1);
+        setTanka(currentTanka);
         await fadeIn(tankaInput.current, 2000);
         await new Promise((resolve) => {
           setTimeout(resolve, 1000);
