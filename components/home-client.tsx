@@ -18,25 +18,42 @@ export default function HomeClient({ tankasData }: Props) {
 
   useEffect(() => {
     let cancelled = false;
+    const isInactive = () => cancelled || tankaInput.current === null;
+    const runStep = async (task: () => Promise<void>) => {
+      if (isInactive()) return false;
+      await task();
+      return !isInactive();
+    };
+
     (async () => {
-      if (tankaInput.current === null || tankasData.length === 0) return;
+      if (tankasData.length === 0) return;
       const shuffledTankas = shuffle([...tankasData]);
       setTanka(shuffledTankas[0] ?? EMPTY_TANKA);
 
       for (const currentTanka of shuffledTankas.slice(1)) {
-        if (cancelled) return;
-        await new Promise((resolve) => {
-          setTimeout(resolve, 1000);
-        });
-        if (cancelled) return;
-        await fadeOut(tankaInput.current, 2000);
-        if (cancelled) return;
+        const waitedBeforeFadeOut = await runStep(
+          () =>
+            new Promise<void>((resolve) => {
+              setTimeout(resolve, 1000);
+            }),
+        );
+        if (!waitedBeforeFadeOut) return;
+
+        const fadedOut = await runStep(() => fadeOut(tankaInput.current!, 2000));
+        if (!fadedOut) return;
+
         setTanka(currentTanka);
-        await fadeIn(tankaInput.current, 2000);
-        if (cancelled) return;
-        await new Promise((resolve) => {
-          setTimeout(resolve, 1000);
-        });
+
+        const fadedIn = await runStep(() => fadeIn(tankaInput.current!, 2000));
+        if (!fadedIn) return;
+
+        const waitedAfterFadeIn = await runStep(
+          () =>
+            new Promise<void>((resolve) => {
+              setTimeout(resolve, 1000);
+            }),
+        );
+        if (!waitedAfterFadeIn) return;
       }
     })().catch(() => {
       // Nothing to do.
