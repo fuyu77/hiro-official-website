@@ -10,21 +10,19 @@ interface Props {
   readonly tankasData: Tanka[];
 }
 
+const EMPTY_TANKA: Tanka = { title: '', source: '' };
+
 export default function HomeClient({ tankasData }: Props) {
   const tankaInput = useRef<HTMLDivElement>(null);
-  const [tankas, setTankas] = useState<Tanka[]>([]);
-  const [tanka, setTanka] = useState<Tanka>({ title: '', source: '' });
-
-  useEffect(() => {
-    const shuffledTankas = shuffle([...tankasData]);
-    setTankas(shuffledTankas);
-    setTanka(shuffledTankas[0] ?? { title: '', source: '' });
-  }, [tankasData]);
+  const [tanka, setTanka] = useState<Tanka | null>(null);
 
   useEffect(() => {
     (async () => {
-      if (tankaInput.current === null || tankas.length === 0) return;
-      for (const currentTanka of tankas.slice(1)) {
+      if (tankaInput.current === null || tankasData.length === 0) return;
+      const shuffledTankas = shuffle([...tankasData]);
+      setTanka(shuffledTankas[0] ?? EMPTY_TANKA);
+
+      for (const currentTanka of shuffledTankas.slice(1)) {
         await new Promise((resolve) => {
           setTimeout(resolve, 1000);
         });
@@ -38,12 +36,14 @@ export default function HomeClient({ tankasData }: Props) {
     })().catch(() => {
       // Nothing to do.
     });
-  }, [tankas]);
+  }, [tankasData]);
+
+  const displayedTanka = tanka ?? EMPTY_TANKA;
 
   return (
     <div ref={tankaInput} className={`${styles.tankaWrapper} is-size-6`}>
-      <div className={styles.tankaItem}>{tanka.title}</div>
-      <div className={styles.tankaItem}>{tanka.source}</div>
+      <div className={styles.tankaItem}>{displayedTanka.title}</div>
+      <div className={styles.tankaItem}>{displayedTanka.source}</div>
     </div>
   );
 }
