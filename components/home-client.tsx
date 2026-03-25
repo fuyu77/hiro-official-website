@@ -17,18 +17,23 @@ export default function HomeClient({ tankasData }: Props) {
   const [tanka, setTanka] = useState<Tanka | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
     (async () => {
       if (tankaInput.current === null || tankasData.length === 0) return;
       const shuffledTankas = shuffle([...tankasData]);
       setTanka(shuffledTankas[0] ?? EMPTY_TANKA);
 
       for (const currentTanka of shuffledTankas.slice(1)) {
+        if (cancelled) return;
         await new Promise((resolve) => {
           setTimeout(resolve, 1000);
         });
+        if (cancelled) return;
         await fadeOut(tankaInput.current, 2000);
+        if (cancelled) return;
         setTanka(currentTanka);
         await fadeIn(tankaInput.current, 2000);
+        if (cancelled) return;
         await new Promise((resolve) => {
           setTimeout(resolve, 1000);
         });
@@ -36,6 +41,10 @@ export default function HomeClient({ tankasData }: Props) {
     })().catch(() => {
       // Nothing to do.
     });
+
+    return () => {
+      cancelled = true;
+    };
   }, [tankasData]);
 
   const displayedTanka = tanka ?? EMPTY_TANKA;
