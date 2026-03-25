@@ -76,49 +76,24 @@ footer {
   }
 
   h2 {
-    font-size: 1.25rem;
-    padding: 0.8rem 0 0.7rem 1.1rem;
+    font-size: 1.32rem;
+    padding: 0.55rem 0 0.5rem 0.9rem;
     display: flex;
     align-items: center;
-    position: relative;
 
-    line-height: 1.2;
-    letter-spacing: 0.12em;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+    font-weight: 500;
 
-    border-left: solid 3px var(--header-color);
-  }
-
-  h2::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 1.1rem;
-    width: 3rem;
-    border-top: solid 1px rgb(from var(--header-color) r g b / 0.7);
-  }
-
-  h2::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: calc(100% - 1.75rem);
+    border-left: solid 4px var(--header-color);
     border-bottom: solid 1px rgb(from var(--header-color) r g b / 0.45);
   }
 
   @media (max-width: 640px) {
     h2 {
-      padding: 0.7rem 0 0.6rem 0.9rem;
-      letter-spacing: 0.08em;
-    }
-
-    h2::before {
-      left: 0.9rem;
-      width: 2.4rem;
-    }
-
-    h2::after {
-      width: calc(100% - 1.35rem);
+      font-size: 1.2rem;
+      padding: 0.5rem 0 0.45rem 0.8rem;
+      letter-spacing: 0.01em;
     }
   }
 
