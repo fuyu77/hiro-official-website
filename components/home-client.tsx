@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Tanka } from '../additional';
 import { fadeIn, fadeOut } from '../lib/animation';
 import { shuffle } from '../lib/util';
@@ -10,35 +10,66 @@ interface Props {
   readonly tankasData: Tanka[];
 }
 
+const EMPTY_TANKA: Tanka = { title: '', source: '' };
+
 export default function HomeClient({ tankasData }: Props) {
   const tankaInput = useRef<HTMLDivElement>(null);
-  const tankas = useMemo(() => shuffle([...tankasData]), [tankasData]);
-  const [currentTankaIndex, setCurrentTankaIndex] = useState(0);
-  const tanka = tankas[currentTankaIndex] ?? { title: '', source: '' };
+  const [tanka, setTanka] = useState<Tanka | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
+    const isInactive = () => cancelled || tankaInput.current === null;
+    const runStep = async (task: () => Promise<void>) => {
+      if (isInactive()) return false;
+      await task();
+      return !isInactive();
+    };
+
     (async () => {
-      if (tankaInput.current === null || tankas.length === 0) return;
-      for (const [index] of tankas.slice(1).entries()) {
-        await new Promise((resolve) => {
-          setTimeout(resolve, 1000);
-        });
-        await fadeOut(tankaInput.current, 2000);
-        setCurrentTankaIndex(index + 1);
-        await fadeIn(tankaInput.current, 2000);
-        await new Promise((resolve) => {
-          setTimeout(resolve, 1000);
-        });
+      if (tankasData.length === 0) return;
+      const shuffledTankas = shuffle([...tankasData]);
+      setTanka(shuffledTankas[0] ?? EMPTY_TANKA);
+
+      for (const currentTanka of shuffledTankas.slice(1)) {
+        const waitedBeforeFadeOut = await runStep(
+          () =>
+            new Promise<void>((resolve) => {
+              setTimeout(resolve, 1000);
+            }),
+        );
+        if (!waitedBeforeFadeOut) return;
+
+        const fadedOut = await runStep(() => fadeOut(tankaInput.current!, 2000));
+        if (!fadedOut) return;
+
+        setTanka(currentTanka);
+
+        const fadedIn = await runStep(() => fadeIn(tankaInput.current!, 2000));
+        if (!fadedIn) return;
+
+        const waitedAfterFadeIn = await runStep(
+          () =>
+            new Promise<void>((resolve) => {
+              setTimeout(resolve, 1000);
+            }),
+        );
+        if (!waitedAfterFadeIn) return;
       }
     })().catch(() => {
       // Nothing to do.
     });
-  }, [tankas]);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [tankasData]);
+
+  const displayedTanka = tanka ?? EMPTY_TANKA;
 
   return (
     <div ref={tankaInput} className={`${styles.tankaWrapper} is-size-6`}>
-      <div className={styles.tankaItem}>{tanka.title}</div>
-      <div className={styles.tankaItem}>{tanka.source}</div>
+      <div className={styles.tankaItem}>{displayedTanka.title}</div>
+      <div className={styles.tankaItem}>{displayedTanka.source}</div>
     </div>
   );
 }
