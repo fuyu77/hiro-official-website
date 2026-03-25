@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Tanka } from '../additional';
 import { fadeIn, fadeOut } from '../lib/animation';
-import { shuffle } from '../lib/util';
 import styles from './home.module.scss';
 
 interface Props {
@@ -12,8 +11,8 @@ interface Props {
 
 export default function HomeClient({ tankasData }: Props) {
   const tankaInput = useRef<HTMLDivElement>(null);
-  const tankas = useMemo(() => shuffle([...tankasData]), [tankasData]);
   const [currentTankaIndex, setCurrentTankaIndex] = useState(0);
+  const tankas = tankasData;
   const tanka = tankas[currentTankaIndex] ?? { title: '', source: '' };
 
   useEffect(() => {
