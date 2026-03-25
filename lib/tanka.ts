@@ -1,7 +1,6 @@
 import matter from 'gray-matter';
 import { fetchMicroCms } from './micro-cms';
 import type { Tanka } from '../additional';
-import { shuffle } from './util';
 
 interface TankasResponse {
   contents: Array<{
@@ -16,10 +15,10 @@ interface FrontMatter {
 
 export const getTankasData = async (): Promise<Tanka[]> => {
   const data: TankasResponse = await fetchMicroCms('tankas');
-  return shuffle(data.contents.map((content) => {
+  return data.contents.map((content) => {
     const matterResult = matter(content.markdown);
     return {
       ...(matterResult.data as FrontMatter),
     };
-  }));
+  });
 };
