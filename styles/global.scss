@@ -77,7 +77,7 @@ footer {
 
   h2 {
     font-size: 1.32rem;
-    padding: 0.55rem 0 0.5rem 0.9rem;
+    padding: 0.55rem 0 0.5rem 0;
     display: flex;
     align-items: center;
 
@@ -85,8 +85,7 @@ footer {
     letter-spacing: 0.02em;
     font-weight: 500;
 
-    border-left: solid 4px var(--header-color);
-    border-bottom: solid 1px rgb(from var(--header-color) r g b / 0.45);
+    border-bottom: solid 1px var(--header-color);
   }
 
   @media (max-width: 640px) {
