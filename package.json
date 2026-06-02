@@ -14,13 +14,13 @@
     "gray-matter": "^4.0.3",
     "next": "^16.2.6",
     "next-mdx-remote": "^6.0.0",
-    "react": "^19.2.5",
+    "react": "^19.2.7",
     "react-dom": "^19.2.6",
     "sass": "^1.100.0"
   },
   "devDependencies": {
     "@types/node": "^24.12.4",
-    "@types/react": "^19.2.15",
+    "@types/react": "^19.2.16",
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.2.6",
     "prettier": "^3.8.3",
