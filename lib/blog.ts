@@ -1,4 +1,4 @@
-import matter from 'gray-matter';
+import matter from '@11ty/gray-matter';
 import type { BlogByYear } from '../additional';
 import { fetchMicroCms } from './micro-cms';
 
