@@ -6,7 +6,7 @@
 
 ## 技術スタック
 
-![jamstack](https://cdn-ak.f.st-hatena.com/images/fotolife/f/fuyu77/20210111/20210111175547.png)
+![jamstack](https://cdn-ak.f.st-hatena.com/images/fotolife/f/fuyu77/20260717/20260717224051.png)
 
 Next.js + microCMS + Vercel の Jamstack な構成です。
 
