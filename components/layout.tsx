@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import styles from './layout.module.scss';
 
 interface Props {
   readonly children: ReactNode;
@@ -14,12 +15,10 @@ export default function Layout({ children, activeTab }: Props) {
       <div className="hero-head">
         <header className="navbar">
           <div className="container is-max-desktop">
-            <div className="navbar-brand">
-              <div className="navbar-item is-size-6">
-                <Link href="/" className="has-text-dark">
-                  Hiro&apos;s Official Website
-                </Link>
-              </div>
+            <div className={`${styles.siteTitle} navbar-item is-size-6`}>
+              <Link href="/" className="has-text-dark">
+                Hiro&apos;s Official Website
+              </Link>
             </div>
           </div>
         </header>
