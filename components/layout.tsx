@@ -13,7 +13,7 @@ export default function Layout({ children, activeTab }: Props) {
     <section className="hero is-fullheight">
       <div className="hero-head">
         <header className="navbar">
-          <div className="container">
+          <div className="container is-max-desktop">
             <div className="navbar-brand">
               <div className="navbar-item is-size-6">
                 <Link href="/" className="has-text-dark">
@@ -28,7 +28,7 @@ export default function Layout({ children, activeTab }: Props) {
       <div className="hero-foot">
         <footer>
           <nav className="tabs is-boxed is-fullwidth">
-            <div className="container">
+            <div className="container is-max-desktop">
               <ul>
                 <li className={activeTab === 'Profile' ? 'is-active' : ''}>
                   <Link href="/profile">Profile</Link>

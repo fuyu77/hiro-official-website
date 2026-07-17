@@ -13,7 +13,7 @@ export default function BlogClient({ allPostsData, years }: BlogProps) {
   }
 
   return (
-    <div className="hero-body container is-block">
+    <div className="hero-body container is-max-desktop">
       <section>
         <nav className="pagination mb-2" role="navigation">
           <ul className="pagination-list">
