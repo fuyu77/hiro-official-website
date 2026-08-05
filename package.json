@@ -12,7 +12,7 @@
     "@11ty/gray-matter": "^3.0.0",
     "bulma": "^1.0.4",
     "date-fns": "^4.4.0",
-    "next": "^16.2.12",
+    "next": "^16.3.0",
     "next-mdx-remote": "^6.0.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
