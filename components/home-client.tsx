@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { Tanka } from '../additional';
 import { fadeIn, fadeOut } from '../lib/animation';
 import { shuffle } from '../lib/util';
-import styles from './home.module.scss';
+import styles from './home.module.css';
 
 interface Props {
   readonly tankasData: Tanka[];

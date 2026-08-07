@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import '../node_modules/bulma/sass';
+@import '../node_modules/bulma/css/bulma.css';
 
 :root {
   --accent-color: oklch(0.86 0.09 155);
@@ -55,50 +55,48 @@ footer {
 .content {
   line-height: 2;
   margin-bottom: 2rem;
+}
 
-  p:not(:last-child),
-  dl:not(:last-child),
-  ol:not(:last-child),
-  ul:not(:last-child),
-  blockquote:not(:last-child),
-  pre:not(:last-child),
-  table:not(:last-child) {
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
-  }
+.content p:not(:last-child),
+.content dl:not(:last-child),
+.content ol:not(:last-child),
+.content ul:not(:last-child),
+.content blockquote:not(:last-child),
+.content pre:not(:last-child),
+.content table:not(:last-child) {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
 
-  h1 {
-    font-size: 1.5rem;
-  }
+.content h1 {
+  font-size: 1.5rem;
+}
 
-  h1:not(:first-child) {
-    margin-top: 0rem;
-  }
+.content h1:not(:first-child) {
+  margin-top: 0;
+}
 
-  h2 {
-    font-size: 1.32rem;
-    padding: 0.55rem 0 0.5rem 0;
-    display: flex;
-    align-items: center;
+.content h2 {
+  font-size: 1.32rem;
+  padding: 0.55rem 0 0.5rem;
+  display: flex;
+  align-items: center;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  border-bottom: solid 1px var(--header-color);
+}
 
-    line-height: 1.35;
-    letter-spacing: 0.02em;
-    font-weight: 500;
-
-    border-bottom: solid 1px var(--header-color);
-  }
-
-  @media (max-width: 640px) {
-    h2 {
-      font-size: 1.2rem;
-      padding: 0.5rem 0 0.45rem 0;
-      letter-spacing: 0.01em;
-    }
-  }
-
-  h3 {
-    font-size: 1.1rem;
-    line-height: 1.25;
+@media (max-width: 640px) {
+  .content h2 {
+    font-size: 1.2rem;
+    padding: 0.5rem 0 0.45rem;
     letter-spacing: 0.01em;
   }
+}
+
+.content h3 {
+  font-size: 1.1rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
 }

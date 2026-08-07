@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
-import '../styles/global.scss';
+import '../styles/global.css';
 import { siteTitle } from '../components/layout';
 
 const description = '歌人の榊原紘の公式サイトです。掲載情報やブログなど。';

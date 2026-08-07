@@ -1,4 +1,4 @@
-import styles from './inline-wrapper.module.scss';
+import styles from './inline-wrapper.module.css';
 
 interface Props {
   readonly children: React.ReactNode;
