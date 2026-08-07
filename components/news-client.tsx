@@ -17,15 +17,17 @@ export default function NewsClient({ allNewsData, years }: NewsProps) {
         <nav className="pagination mb-2">
           <ul className="pagination-list">
             {years.map((year) => (
-              <div
-                key={year}
-                className={`pagination-link ${currentYear === year ? 'is-current' : ''}`}
-                onClick={() => {
-                  setCurrentYear(year);
-                }}
-              >
-                {year}
-              </div>
+              <li key={year}>
+                <button
+                  type="button"
+                  className={`pagination-link ${currentYear === year ? 'is-current' : ''}`}
+                  onClick={() => {
+                    setCurrentYear(year);
+                  }}
+                >
+                  {year}
+                </button>
+              </li>
             ))}
           </ul>
         </nav>
