@@ -39,7 +39,7 @@ export default function NewsClient({ allNewsData, years }: NewsProps) {
               </small>
               <br />
               <a
-                className="has-text-weight-semibold is-size-5 has-body-text"
+                className="has-text-weight-semibold is-size-5 has-text-body"
                 href={url}
                 rel="noreferrer"
                 target="_blank"
