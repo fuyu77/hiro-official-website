@@ -1,4 +1,4 @@
-import styles from './inline-item.module.scss';
+import styles from './inline-item.module.css';
 
 interface Props {
   readonly children: React.ReactNode;
