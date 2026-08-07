@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { Date } from './date';
+import { FormattedDate } from './formatted-date';
 
 interface Props {
   readonly title: string;
@@ -54,7 +54,7 @@ export default function BlogPostClient({ title, date, isPrivate, children }: Pro
       <article className="content">
         {verified ? (
           <div>
-            <Date dateString={date} />
+            <FormattedDate dateString={date} />
             <h1>{title}</h1>
             <div>
               <button type="button" className="button" onClick={speak}>

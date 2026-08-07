@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import type { BlogProps } from '../additional';
-import { Date } from './date';
+import { FormattedDate } from './formatted-date';
 
 export default function BlogClient({ allPostsData, years }: BlogProps) {
   const [currentYear, setCurrentYear] = useState<string>(years[0] ?? '');
@@ -34,7 +34,7 @@ export default function BlogClient({ allPostsData, years }: BlogProps) {
           {allPostsData[currentYear]?.map(({ id, date, title }) => (
             <li key={id} className="mb-2">
               <small>
-                <Date dateString={date} />
+                <FormattedDate dateString={date} />
               </small>
               <br />
               <Link

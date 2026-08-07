@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import type { NewsProps } from '../additional';
-import { Date } from './date';
+import { FormattedDate } from './formatted-date';
 
 export default function NewsClient({ allNewsData, years }: NewsProps) {
   const [currentYear, setCurrentYear] = useState<string>(years[0] ?? '');
@@ -33,7 +33,7 @@ export default function NewsClient({ allNewsData, years }: NewsProps) {
           {allNewsData[currentYear]?.map(({ id, date, title, url }) => (
             <li key={id} className="mb-2">
               <small>
-                <Date dateString={date} />
+                <FormattedDate dateString={date} />
               </small>
               <br />
               <a
