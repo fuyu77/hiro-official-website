@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { FormattedDate } from './formatted-date';
 
 interface Props {
@@ -10,7 +10,12 @@ interface Props {
   readonly children: ReactNode;
 }
 
-export default function BlogPostClient({ title, date, isPrivate, children }: Props) {
+export default function BlogPostClient({
+  title,
+  date,
+  isPrivate,
+  children,
+}: Props) {
   const [verified, setVerified] = useState<boolean>(!isPrivate);
   const [speechButtonText, setSpeechButtonText] = useState<string>('音読する');
   const body = useRef<HTMLDivElement>(null);
@@ -21,7 +26,7 @@ export default function BlogPostClient({ title, date, isPrivate, children }: Pro
         speechSynthesis.cancel();
       }
     },
-    []
+    [],
   );
 
   const changePassword = (event: React.ChangeEvent<HTMLInputElement>): void => {

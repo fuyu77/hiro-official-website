@@ -13,7 +13,12 @@ function Pdf({ url }: Props): React.ReactElement {
       />
       <p style={{ marginTop: '0.75rem' }}>
         PDFを表示できない場合は
-        <a href={url} target="_blank" rel="noreferrer noopener" style={{ marginLeft: '0.25rem' }}>
+        <a
+          href={url}
+          target="_blank"
+          rel="noreferrer noopener"
+          style={{ marginLeft: '0.25rem' }}
+        >
           こちら
         </a>
         をクリックしてください。

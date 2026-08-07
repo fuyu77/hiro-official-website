@@ -1,4 +1,7 @@
-export const fetchMicroCms = async <T>(path: string, limit = 10000): Promise<T> => {
+export const fetchMicroCms = async <T>(
+  path: string,
+  limit = 10000,
+): Promise<T> => {
   const root = 'https://hiro-official-website.microcms.io/api/v1/';
   const apiKey = process.env.MICROCMS_API_KEY;
   if (!apiKey) {

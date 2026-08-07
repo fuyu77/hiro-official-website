@@ -1,4 +1,7 @@
-export const fadeIn = async (element: HTMLDivElement, duration: number): Promise<void> => {
+export const fadeIn = async (
+  element: HTMLDivElement,
+  duration: number,
+): Promise<void> => {
   let opacity = 0;
   const start = performance.now();
   while (opacity < 1) {
@@ -12,7 +15,10 @@ export const fadeIn = async (element: HTMLDivElement, duration: number): Promise
   element.style.opacity = '1';
 };
 
-export const fadeOut = async (element: HTMLDivElement, duration: number): Promise<void> => {
+export const fadeOut = async (
+  element: HTMLDivElement,
+  duration: number,
+): Promise<void> => {
   let opacity = 1;
   const start = performance.now();
   while (opacity > 0) {

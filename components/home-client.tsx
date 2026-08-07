@@ -19,7 +19,9 @@ export default function HomeClient({ tankasData }: Props) {
   useEffect(() => {
     let cancelled = false;
     const isInactive = () => cancelled || tankaInput.current === null;
-    const runStep = async (task: (element: HTMLDivElement) => Promise<void>) => {
+    const runStep = async (
+      task: (element: HTMLDivElement) => Promise<void>,
+    ) => {
       const element = tankaInput.current;
       if (cancelled || element === null) return false;
       await task(element);
