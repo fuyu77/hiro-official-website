@@ -30,8 +30,8 @@ footer {
   padding: 1rem 1.5rem 3rem;
 }
 
-.has-text-dark {
-  color: var(--bulma-body-color) !important;
+.has-body-text {
+  color: var(--bulma-body-color);
 }
 
 .pagination-link.is-current {

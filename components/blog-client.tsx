@@ -41,7 +41,7 @@ export default function BlogClient({ allPostsData, years }: BlogProps) {
               <br />
               <Link
                 href={`/blog/${id}`}
-                className="has-text-weight-semibold is-size-5 has-text-dark"
+                className="has-text-weight-semibold is-size-5 has-body-text"
               >
                 {title}
               </Link>
