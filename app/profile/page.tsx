@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
+import Image from '../../components/image';
+import InlineItem from '../../components/inline-item';
+import InlineWrapper from '../../components/inline-wrapper';
 import Layout from '../../components/layout';
 import MdxContent from '../../components/mdx-content';
-import Image from '../../components/image';
-import InlineWrapper from '../../components/inline-wrapper';
-import InlineItem from '../../components/inline-item';
 import { getProfileData } from '../../lib/profile';
 
 const components = { Image, InlineWrapper, InlineItem };

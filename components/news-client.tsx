@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import type { NewsProps } from '../additional';
-import { Date } from './date';
+import { FormattedDate } from './formatted-date';
 
 export default function NewsClient({ allNewsData, years }: NewsProps) {
   const [currentYear, setCurrentYear] = useState<string>(years[0] ?? '');
@@ -14,18 +14,20 @@ export default function NewsClient({ allNewsData, years }: NewsProps) {
   return (
     <div className="hero-body container is-max-desktop">
       <section>
-        <nav className="pagination mb-2" role="navigation">
+        <nav className="pagination mb-2">
           <ul className="pagination-list">
             {years.map((year) => (
-              <div
-                key={year}
-                className={`pagination-link ${currentYear === year ? 'is-current' : ''}`}
-                onClick={() => {
-                  setCurrentYear(year);
-                }}
-              >
-                {year}
-              </div>
+              <li key={year}>
+                <button
+                  type="button"
+                  className={`pagination-link ${currentYear === year ? 'is-current' : ''}`}
+                  onClick={() => {
+                    setCurrentYear(year);
+                  }}
+                >
+                  {year}
+                </button>
+              </li>
             ))}
           </ul>
         </nav>
@@ -33,11 +35,11 @@ export default function NewsClient({ allNewsData, years }: NewsProps) {
           {allNewsData[currentYear]?.map(({ id, date, title, url }) => (
             <li key={id} className="mb-2">
               <small>
-                <Date dateString={date} />
+                <FormattedDate dateString={date} />
               </small>
               <br />
               <a
-                className="has-text-weight-semibold is-size-5 has-text-dark"
+                className="has-text-weight-semibold is-size-5 has-text-body"
                 href={url}
                 rel="noreferrer"
                 target="_blank"

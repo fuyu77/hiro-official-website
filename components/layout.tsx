@@ -16,7 +16,7 @@ export default function Layout({ children, activeTab }: Props) {
         <header className="navbar">
           <div className="container is-max-desktop">
             <div className={`${styles.siteTitle} navbar-item is-size-6`}>
-              <Link href="/" className="has-text-dark">
+              <Link href="/" className="has-text-body">
                 Hiro&apos;s Official Website
               </Link>
             </div>

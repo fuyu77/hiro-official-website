@@ -1,5 +1,5 @@
-import type { ComponentProps } from 'react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import type { ComponentProps } from 'react';
 
 interface Props {
   readonly source: ComponentProps<typeof MDXRemote>['source'];

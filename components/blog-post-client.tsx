@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { Date } from './date';
+import { type ReactNode, useEffect, useRef, useState } from 'react';
+import { FormattedDate } from './formatted-date';
 
 interface Props {
   readonly title: string;
@@ -10,7 +10,12 @@ interface Props {
   readonly children: ReactNode;
 }
 
-export default function BlogPostClient({ title, date, isPrivate, children }: Props) {
+export default function BlogPostClient({
+  title,
+  date,
+  isPrivate,
+  children,
+}: Props) {
   const [verified, setVerified] = useState<boolean>(!isPrivate);
   const [speechButtonText, setSpeechButtonText] = useState<string>('音読する');
   const body = useRef<HTMLDivElement>(null);
@@ -21,7 +26,7 @@ export default function BlogPostClient({ title, date, isPrivate, children }: Pro
         speechSynthesis.cancel();
       }
     },
-    []
+    [],
   );
 
   const changePassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -54,7 +59,7 @@ export default function BlogPostClient({ title, date, isPrivate, children }: Pro
       <article className="content">
         {verified ? (
           <div>
-            <Date dateString={date} />
+            <FormattedDate dateString={date} />
             <h1>{title}</h1>
             <div>
               <button type="button" className="button" onClick={speak}>
@@ -68,9 +73,12 @@ export default function BlogPostClient({ title, date, isPrivate, children }: Pro
           </div>
         ) : (
           <div>
-            <label className="label">パスワード</label>
+            <label className="label" htmlFor="blog-password">
+              パスワード
+            </label>
             <div className="control">
               <input
+                id="blog-password"
                 className="input"
                 type="text"
                 placeholder="入力してください"

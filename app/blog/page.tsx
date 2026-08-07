@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Layout from '../../components/layout';
 import BlogClient from '../../components/blog-client';
+import Layout from '../../components/layout';
 import { getSortedPostsData } from '../../lib/blog';
 
 export const metadata: Metadata = {

@@ -19,9 +19,12 @@ export default function HomeClient({ tankasData }: Props) {
   useEffect(() => {
     let cancelled = false;
     const isInactive = () => cancelled || tankaInput.current === null;
-    const runStep = async (task: () => Promise<void>) => {
-      if (isInactive()) return false;
-      await task();
+    const runStep = async (
+      task: (element: HTMLDivElement) => Promise<void>,
+    ) => {
+      const element = tankaInput.current;
+      if (cancelled || element === null) return false;
+      await task(element);
       return !isInactive();
     };
 
@@ -39,12 +42,12 @@ export default function HomeClient({ tankasData }: Props) {
         );
         if (!waitedBeforeFadeOut) return;
 
-        const fadedOut = await runStep(() => fadeOut(tankaInput.current!, 2000));
+        const fadedOut = await runStep((element) => fadeOut(element, 2000));
         if (!fadedOut) return;
 
         setTanka(currentTanka);
 
-        const fadedIn = await runStep(() => fadeIn(tankaInput.current!, 2000));
+        const fadedIn = await runStep((element) => fadeIn(element, 2000));
         if (!fadedIn) return;
 
         const waitedAfterFadeIn = await runStep(

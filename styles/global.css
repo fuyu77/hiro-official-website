@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import '../node_modules/bulma/css/bulma.css';
+@import "../node_modules/bulma/css/bulma.css";
 
 :root {
   --accent-color: oklch(0.86 0.09 155);
@@ -30,8 +30,8 @@ footer {
   padding: 1rem 1.5rem 3rem;
 }
 
-.has-text-dark {
-  color: var(--bulma-body-color) !important;
+.has-text-body {
+  color: var(--bulma-body-color);
 }
 
 .pagination-link.is-current {
