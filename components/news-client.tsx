@@ -14,7 +14,7 @@ export default function NewsClient({ allNewsData, years }: NewsProps) {
   return (
     <div className="hero-body container is-max-desktop">
       <section>
-        <nav className="pagination mb-2" role="navigation">
+        <nav className="pagination mb-2">
           <ul className="pagination-list">
             {years.map((year) => (
               <div
