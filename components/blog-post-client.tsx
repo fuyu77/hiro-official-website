@@ -68,9 +68,12 @@ export default function BlogPostClient({ title, date, isPrivate, children }: Pro
           </div>
         ) : (
           <div>
-            <label className="label">パスワード</label>
+            <label className="label" htmlFor="blog-password">
+              パスワード
+            </label>
             <div className="control">
               <input
+                id="blog-password"
                 className="input"
                 type="text"
                 placeholder="入力してください"
