@@ -33,9 +33,9 @@ export const getSortedNewsData = async (): Promise<NewsByYear> => {
   });
   return allNewsData.reduce<NewsByYear>((result, post) => {
     const year = post.date.slice(0, 4);
-    return {
-      ...result,
-      [year]: result[year] ? [...result[year], post] : [post],
-    };
+    const posts = result[year] ?? [];
+    posts.push(post);
+    result[year] = posts;
+    return result;
   }, {});
 };
