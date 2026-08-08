@@ -32,7 +32,7 @@ export default function HomeClient({ tankasData }: Props) {
       setIsVisible(true);
 
       for (const [index, currentTanka] of shuffledTankas.slice(1).entries()) {
-        if (!(await wait(index === 0 ? 1000 : 2000))) return;
+        if (!(await wait(index === 0 ? 1000 : 3000))) return;
 
         setIsVisible(false);
         if (!(await wait(2000))) return;
