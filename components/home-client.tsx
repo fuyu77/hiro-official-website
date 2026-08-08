@@ -12,7 +12,7 @@ interface Props {
 const EMPTY_TANKA: Tanka = { title: '', source: '' };
 
 export default function HomeClient({ tankasData }: Props) {
-  const [tanka, setTanka] = useState<Tanka | null>(null);
+  const [tanka, setTanka] = useState<Tanka>(EMPTY_TANKA);
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function HomeClient({ tankasData }: Props) {
       if (tankasData.length === 0) return;
 
       const shuffledTankas = shuffle([...tankasData]);
-      setTanka(shuffledTankas[0] ?? EMPTY_TANKA);
+      setTanka(shuffledTankas[0]);
       setIsVisible(true);
 
       for (const [index, currentTanka] of shuffledTankas.slice(1).entries()) {
@@ -50,14 +50,12 @@ export default function HomeClient({ tankasData }: Props) {
     };
   }, [tankasData]);
 
-  const displayedTanka = tanka ?? EMPTY_TANKA;
-
   return (
     <div
       className={`${styles.tankaWrapper} ${isVisible ? styles.visible : ''} is-size-6`}
     >
-      <div className={styles.tankaItem}>{displayedTanka.title}</div>
-      <div className={styles.tankaItem}>{displayedTanka.source}</div>
+      <div className={styles.tankaItem}>{tanka.title}</div>
+      <div className={styles.tankaItem}>{tanka.source}</div>
     </div>
   );
 }
