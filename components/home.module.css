@@ -1,6 +1,8 @@
 .tankaWrapper {
   margin: 1rem auto 3rem;
   width: 3rem;
+  opacity: 0;
+  transition: opacity 2s;
   font-family: serif;
   writing-mode: vertical-rl;
   white-space: nowrap;
@@ -8,6 +10,10 @@
   justify-content: space-around;
   align-items: flex-end;
   flex-direction: column;
+}
+
+.visible {
+  opacity: 1;
 }
 
 .tankaItem {
